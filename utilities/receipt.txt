@@ -1,0 +1,7 @@
+receipt
+
+receipt_id
+exc_order
+is_receipt
+re_created_at
+re_updated_at

@@ -1,0 +1,13 @@
+exchange_order
+
+xo_date, customer, counter_staff, booking_ref, supplier
+'$xo_date', '$customer', '$counter_staff', '$booking_ref', '$supplier'
+
+ex_id
+xo_date
+customer
+counter_staff
+booking_ref
+supplier
+ex_created_at
+ex_updated_at
