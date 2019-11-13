@@ -43,7 +43,7 @@ if (!isset($_SESSION)) {
     <div class="login-area">
         <div class="container">
             <div class="login-box ptb--100">
-                <form action="includes/login.inc.php" method="POST">
+                <form action="includes/authentication/login.inc.php" method="POST">
                     <div class="login-form-head">
                         <h4>Sign In</h4>
                         <p>Hello there, Sign in and start managing your Adminisrator</p>

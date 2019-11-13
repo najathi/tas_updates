@@ -5,37 +5,22 @@ if (!isset($_SESSION)) {
 
 if (!$_SESSION['user_role_id'] == 1) {
     //send them back
-    header("Location: 404.php");
+    header("Location: errors/404.php");
 }
 
-include_once 'includes/authenticate.inc.php';
-include_once 'includes/ses_record_set.inc.php';
-include_once 'includes/cus-ac-count.inc.php';
+include_once 'includes/authentication/authenticate.inc.php';
+include_once 'includes/authentication/ses_record_set.inc.php';
+include_once 'includes/customer/cus-ac-count.inc.php';
+
+// a_config.php template file
+include('layouts/a_config.php');
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Add Customer - TAS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="assets/css/typography.css">
-    <link rel="stylesheet" href="assets/css/default-css.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <?php include('layouts/head-tag-contents.php'); ?>
 </head>
 
 <body>
@@ -52,61 +37,9 @@ include_once 'includes/cus-ac-count.inc.php';
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                <div class="logo">
-                    <a href="/"><img src="assets/images/header/header.png" alt="logo"></a>
-                </div>
+                <?php include("layouts/header-logo.php"); ?>
             </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li>
-                                <a href="/" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Purchase</span></a>
-                                <ul class="collapse">
-                                    <li><a href="exchange-order">Exchange Order</a></li>
-                                    <li><a href="search-ex-order">Search</a></li>
-                                    <!-- <li><a href="#">Logs</a></li> -->
-                                    <li><a href="invoice">Invoice</a></li>
-                                    <li><a href="receipt">Reciept</a></li>
-                                </ul>
-                            </li>
-                            <?php
-                            if ($_SESSION['user_role_id'] == 1) {
-                                ?>
-
-                                <li>
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-certificate"></i><span>Supplier</span></a>
-                                    <ul class="collapse">
-                                        <li><a href="add-supplier">Add Supplier</a></li>
-                                        <li><a href="search-supplier">Search</a></li>
-                                    </ul>
-                                </li>
-                                <li class="active">
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-users"></i><span>Customer</span></a>
-                                    <ul class="collapse">
-                                        <li class="active"><a href="add-customer">Add Customer</a></li>
-                                        <li><a href="search-customer">Search</a></li>
-                                    </ul>
-                                </li>
-                                <div style="margin:1rem;"></div>
-                                <div style="border:.5px dashed #aaa; opacity:.3; margin:0 1rem;"></div>
-                                <div style="margin:1rem;"></div>
-                                <li>
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i><span>User Account</span></a>
-                                    <ul class="collapse">
-                                        <li><a href="search-user">Search</a></li>
-                                    </ul>
-                                </li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <?php include("layouts/main_menu.php"); ?>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -145,7 +78,7 @@ include_once 'includes/cus-ac-count.inc.php';
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname'];
                                                                                             ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="includes/logout.inc.php">Log Out</a>
+                                <?php include("layouts/logout.php"); ?>
                             </div>
                         </div>
                     </div>
@@ -182,7 +115,7 @@ include_once 'includes/cus-ac-count.inc.php';
                                     <div class="card-body">
                                         <h4 class="header-title">Add Customer</h4>
                                         <p class="text-muted font-14 mb-4">Here add new customer of <code>Customer Information</code>.</p>
-                                        <form action="includes/add-customer.inc.php" method="POST">
+                                        <form action="includes/customer/add-customer.inc.php" method="POST">
                                             <fieldset disabled>
                                                 <div class="form-group row">
                                                     <div class="col-sm-6">
@@ -238,8 +171,7 @@ include_once 'includes/cus-ac-count.inc.php';
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2019. All right reserved. System Developed by <a target="_blank" href="https://ideageek.net/
-">ideaGeek</a>.</p>
+                <?php include("layouts/footer.php"); ?>
             </div>
         </footer>
         <!-- footer area end-->

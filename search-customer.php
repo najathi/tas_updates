@@ -8,99 +8,20 @@ if (!$_SESSION['user_role_id'] == 1) {
     header("Location: 404.php");
 }
 
-include_once 'includes/dbh.inc.php';
-include_once 'includes/authenticate.inc.php';
-include_once 'includes/ses_record_set.inc.php';
+include_once 'includes/connection/dbh.inc.php';
+include_once 'includes/authentication/authenticate.inc.php';
+include_once 'includes/authentication/ses_record_set.inc.php';
 include_once 'lib/address/address_divider.inc.php';
 
-/*
-// Get session data
-$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
-
-// Get status message from session
-if (!empty($sessData['status']['msg'])) {
-    $statusMsg = $sessData['status']['msg'];
-    $statusMsgType = $sessData['status']['type'];
-    unset($_SESSION['sessData']['status']);
-}
-
-// Load pagination class
-require_once 'lib/mysqli_extension/Pagination.class.php';
-
-// Load and initialize database class
-require_once 'lib/mysqli_extension/DB.class.php';
-$db = new DB();
-
-// Page offset and limit
-$perPageLimit = 10;
-$offset = !empty($_GET['page'])?(($_GET['page']-1)*$perPageLimit):0;
-
-// Get search keyword
-$searchKeyword = !empty($_GET['sq'])?$_GET['sq']:'';
-$searchStr = !empty($searchKeyword)?'?sq='.$searchKeyword:'';
-
-// Search DB query
-$searchArr = '';
-if (!empty($searchKeyword)) {
-    $searchArr = array(
-        'cus_ac_code' => $searchKeyword,
-        'c_name' => $searchKeyword,
-        'c_tele_no' => $searchKeyword,
-        'c_email' => $searchKeyword,
-        'c_address' => $searchKeyword
-    );
-}
-
-// Get count of the customer
-$con = array(
-    'like_or' => $searchArr,
-    'return_type' => 'count'
-);
-$rowCount = $db->getRows('customer', $con);
-
-// Initialize pagination class
-$pagConfig = array(
-    'baseURL' => 'search-customer.php'.$searchStr,
-    'totalRows' => $rowCount,
-    'perPage' => $perPageLimit
-);
-$pagination = new Pagination($pagConfig);
-
-// Get customer from database
-$con = array(
-    'like_or' => $searchArr,
-    'start' => $offset,
-    'limit' => $perPageLimit,
-    'order_by' => 'cus_ac_code ASC',
-);
-$customer = $db->getRows('customer', $con);
- */
+// a_config.php template file
+include('layouts/a_config.php');
 
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Search Customer - TAS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="assets/css/typography.css">
-    <link rel="stylesheet" href="assets/css/default-css.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <?php include('layouts/head-tag-contents.php'); ?>
 
     <!-- Data Table  -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -122,10 +43,9 @@ $customer = $db->getRows('customer', $con);
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                <div class="logo">
-                    <a href="/"><img src="assets/images/header/header.png" alt="logo"></a>
-                </div>
+                <?php include("layouts/header-logo.php"); ?>
             </div>
+            <?php include("layouts/main_menu.php"); ?>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
@@ -219,7 +139,7 @@ $customer = $db->getRows('customer', $con);
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="includes/logout.inc.php">Log Out</a>
+                                <?php include("layouts/logout.php"); ?>
                             </div>
                         </div>
                     </div>
@@ -286,40 +206,6 @@ $customer = $db->getRows('customer', $con);
                                                 <th scope="col">action</th>
                                             </tr>
                                         </thead>
-
-                                        <!-- <tbody>
-                                                <?php
-                                                /* }
-                                                 if (!empty($customer)) {
-                                                     $count = 0;
-                                                     foreach ($customer as $cus) {
-                                                         $count++; */ ?>
-                                                <tr>
-                                                    <td scope="row"><strong><?php //echo $cus['cus_ac_code'];
-                                                                            ?></strong></td>
-                                                    <td><?php //echo $cus['c_name'];
-                                                        ?></td>
-                                                    <td><?php //echo $cus['c_tele_no'];
-                                                        ?></td>
-                                                    <td><?php //echo $cus['c_email'];
-                                                        ?></td>
-                                                    <td><?php //echo addressDevider($cus['c_address']);
-                                                        ?></td>
-                                                    <td>
-                                                        <ul class="d-flex justify-content-center">
-                                                            <li class="mr-3"><a href="" class="text-secondary edit-btn" data-toggle="modal" data-target="#editModal"><i class="fa fa-edit"></i></a></li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                <?php
-                                                /* }
-                                                 } else { */ ?>
-                                                <tr><div class='alert alert-danger' role='alert'>
-                                                    <strong>Oh snap!</strong> No Records Found !
-                                                    </div></tr>
-                                                <?php //}
-                                                ?>
-                                            </tbody> -->
                                     </table>
 
                                     <!-- Display pagination links -->
@@ -408,8 +294,7 @@ $customer = $db->getRows('customer', $con);
     <!-- footer area start-->
     <footer>
         <div class="footer-area">
-            <p>© Copyright 2019. All right reserved. System Developed by <a target="_blank" href="https://ideageek.net/
-">ideaGeek</a>.</p>
+            <?php include("layouts/footer.php"); ?>
         </div>
     </footer>
     <!-- footer area end-->
@@ -626,7 +511,7 @@ $customer = $db->getRows('customer', $con);
             $(document).on('click', '.edit-btn', function() {
                 var cus_ac_code = $(this).attr("id");
                 $.ajax({
-                    url: "includes/fetch-customer.inc.php",
+                    url: "includes/customer/fetch-customer.inc.php",
                     method: "POST",
                     data: {
                         cus_ac_code: cus_ac_code
@@ -655,7 +540,7 @@ $customer = $db->getRows('customer', $con);
             $('#insert_form').on("submit", function(event) {
                 event.preventDefault();
                 $.ajax({
-                    url: "includes/customer-edit.inc.php",
+                    url: "includes/customer/customer-edit.inc.php",
                     method: "POST",
                     data: $('#insert_form').serialize(),
                     beforeSend: function() {
@@ -704,7 +589,7 @@ $customer = $db->getRows('customer', $con);
                 "order": [],
                 "autoWidth": false,
                 "ajax": {
-                    url: "includes/fetch-customer-dt.inc.php",
+                    url: "includes/customer/fetch-customer-dt.inc.php",
                     type: "POST"
                 },
                 "columnDefs": [{

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 03, 2019 at 07:57 AM
--- Server version: 10.3.15-MariaDB
--- PHP Version: 7.3.6
+-- Generation Time: Oct 26, 2019 at 09:27 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -63,7 +63,7 @@ INSERT INTO `customer` (`cus_ac_code`, `c_name`, `c_tele_no`, `c_email`, `c_addr
 (000017, 'vdvdvd', 'ddfdfdf', 'highths', 'gjjj', 'hjhjhjh', '0000-00-00 00:00:00', '2019-09-03 05:38:51'),
 (000019, 'fhfh', 'ddfdfdf', 'highths', 'gjjj', 'hjhjhjh', '0000-00-00 00:00:00', '2019-09-03 05:47:24'),
 (000020, 'vdvdvd', 'ddfdfdf', 'highths', 'gjjj', 'hjhjhjh', '0000-00-00 00:00:00', '2019-09-03 05:38:51'),
-(000022, 'grgrg', 'rgrgr', 'grgrgrg@HG.KK', 'rgrgrg', 'rgr', '2019-09-01 07:21:23', '2019-09-03 05:38:51');
+(000022, 'tyutytyyt', 'rgrgr', 'grgrgrg@HG.KK', 'rgrgrg', 'rgr', '2019-09-01 07:21:23', '2019-10-21 17:19:15');
 
 -- --------------------------------------------------------
 
@@ -162,16 +162,77 @@ INSERT INTO `exchange_order` (`ex_id`, `xo_date`, `customer`, `counter_staff`, `
 (000139, '2019-08-13', 000001, 'Najathi', 'jkjkjk', 'jkjk', '', '2019-08-14', 000003, '547546.00', '65656.00', '565.00', '656.00', '6556565.00', '6623442.00', '656.00', '56.00', '56.00', '7171700.00', '7171644.00', 'hkhjkhk', 'hkh', 'khkh', 'khkhkh', '2019-08-05', '2019-08-26 16:51:24', '2019-09-03 05:17:43', 0),
 (000140, '2019-08-13', 000001, 'Najathi', 'jkjkjk', 'jkjk', '', '2019-08-14', 000003, '547546.00', '65656.00', '565.00', '656.00', '6556565.00', '6623442.00', '656.00', '56.00', '56.00', '7171700.00', '7171644.00', 'hkhjkhk', 'hkh', 'khkh', 'khkhkh', '2019-08-05', '2019-08-26 16:52:09', '2019-09-03 05:17:43', 0),
 (000141, '2019-08-08', 000003, 'Najathi', 'hghghg', 'hghgh', '', '2019-08-13', 000003, '53656.00', '56565.00', '656.00', '565656.00', '565.00', '623442.00', '56565.00', '64.96', '65.00', '733728.00', '733663.00', 'fghfghfg', 'fgf', 'gfgfgf', 'gfgf', '2019-08-06', '2019-08-26 16:56:21', '2019-09-03 05:17:43', 0),
-(000142, '2019-08-08', 000003, 'Najathi', 'hghghg', 'hghgh', '', '2019-08-13', 000003, '53656.00', '56565.00', '656.00', '565656.00', '565.00', '623442.00', '56565.00', '64.96', '65.00', '733728.00', '733663.00', 'fghfghfg', 'fgf', 'gfgfgf', 'gfgf', '2019-08-06', '2019-08-26 16:56:30', '2019-09-03 05:17:43', 0),
+(000142, '2019-08-08', 000003, 'Najathi', 'hghghg', 'hghgh', '24554', '2019-08-13', 000003, '53656.00', '56565.00', '656.00', '565656.00', '565.00', '623442.00', '56565.00', '64.96', '65.00', '733728.00', '733663.00', 'fghfghfg', 'fgf', 'gfgfgf', 'gfgf', '2019-08-06', '2019-08-26 16:56:30', '2019-10-21 17:45:19', 0),
 (000144, '2019-08-15', 000003, 'Najathi', 'hghghghgh', 'ghghgh', '', '2019-08-14', 000003, '56565.00', '6565.00', '56.00', '6565.00', '65656.00', '78842.00', '545.00', '454454.00', '454454.00', '590406.00', '135952.00', 'hghghg', 'hgh', 'ghgh', 'ghghg', '2019-08-05', '2019-08-26 17:01:28', '2019-09-03 05:17:43', 0),
-(000145, '2019-08-15', 000003, 'Najathi', 'hghghghgh', 'ghghgh', '', '2019-08-14', 000003, '56565.00', '6565.00', '56.00', '6565.00', '65656.00', '78842.00', '545.00', '454454.00', '454454.00', '590406.00', '135952.00', 'hghghg', 'hgh', 'ghgh', 'ghghg', '2019-08-05', '2019-08-26 17:01:34', '2019-09-03 05:17:43', 0),
-(000147, '2019-08-13', 000003, 'Najathi', 'hjhjh', 'jhjhjh', '', '2019-03-25', 000003, '454.00', '5445.00', '4.00', '5454.00', '445.00', '11348.00', '4545.00', '5454.00', '5454.00', '21801.00', '16347.00', 'gjhghjgh', 'ghgh', 'ghg', 'hghgh', '2019-08-13', '2019-08-26 17:03:33', '2019-09-03 05:17:43', 0),
 (000149, '2019-08-13', 000002, 'Najathi', 'jmjmj', 'mjmjm', 'efe', '2019-08-20', 000005, '5865656.00', '565656.00', '5656.00', '56.00', '65656565.00', '66227933.00', '55.00', '6565.00', '6565.00', '72100209.00', '72093644.00', 'gfgf', 'gfgf', 'gfgfg', 'fgfgf', '2019-08-20', '2019-08-26 17:07:06', '2019-09-03 05:36:47', 0),
 (000151, '2019-08-08', 000003, 'Najathi', 'dgdgd', 'gdgdgd', 'dgdgdg', '2019-08-22', 000002, '444.00', '44.00', '44.00', '44.00', '44.00', '176.00', '74575.00', '7576.00', '7576.00', '82771.00', '75195.00', 'rgrgr', 'grg', 'rgr', 'rgrgr', '2019-08-19', '2019-08-31 16:37:20', '2019-09-03 05:17:43', 0),
-(000152, '2019-08-08', 000003, 'Najathi', 'dgdgd', 'gdgdgd', 'dgdgdg', '2019-08-22', 000002, '444.00', '44.00', '44.00', '44.00', '44.00', '176.00', '74575.00', '7576.00', '7576.00', '82771.00', '75195.00', 'rgrgr', 'grg', 'rgr', 'rgrgr', '2019-08-19', '2019-08-31 16:37:45', '2019-09-03 05:17:43', 1),
-(000153, '2019-08-08', 000003, 'Najathi', 'dgdgd', 'gdgdgd', 'dgdgdg', '2019-08-22', 000002, '444.00', '44.00', '44.00', '44.00', '44.00', '176.00', '74575.00', '7576.00', '7576.00', '82771.00', '75195.00', 'rgrgr', 'grg', 'rgr', 'rgrgr', '2019-08-19', '2019-08-31 16:37:52', '2019-09-03 05:17:43', 0),
-(000154, '2019-08-14', 000003, 'Najathi', 'sddfhdhf', 'hfhfhfhf', 'fhfhfh', '2019-08-14', 000002, '454.00', '454545.00', '454.00', '54545.00', '5454.00', '514998.00', '5454.00', '545.00', '545.00', '521451.00', '520906.00', 'xvxvx', 'vx', 'vxvx', 'vxv', '2019-08-06', '2019-08-30 16:46:54', '2019-09-03 05:17:43', 0),
-(000156, '2019-08-13', 000003, 'Najathi', 'fbfbf', 'bfbfb', 'fbfbf', '2019-08-07', 000003, '45464.00', '6464.00', '646.00', '464.00', '646464.00', '654038.00', '646.00', '64.00', '64.00', '700212.00', '700148.00', '11111', 'vdv', 'dvd', 'vdvdv', '2019-08-13', '2019-08-31 17:02:06', '2019-09-02 02:39:01', 1);
+(000152, '2019-08-08', 000003, 'Najathi', 'dgdgd', 'gdgdgd', 'dgdgdg', '2019-08-22', 000011, '444.00', '44.00', '44.00', '44.00', '44.00', '176.00', '74575.00', '7576.00', '7576.00', '82771.00', '75195.00', 'rgrgr', 'grg', 'rgr', 'rgrgr', '2019-08-19', '2019-08-31 16:37:45', '2019-10-21 17:18:09', 1),
+(000154, '2019-08-14', 000001, 'Najathi', 'sddfhdhf', 'hfhfhfhf', 'yyyyyyyyyyyyy', '2019-08-14', 000006, '454.00', '454545.00', '454.00', '54545.00', '5454.00', '514998.00', '5454.00', '545.00', '545.00', '521451.00', '520906.00', 'm,nbh', 'vx', 'vxvx', 'vxv', '2019-08-06', '2019-08-30 16:46:54', '2019-10-22 02:33:34', 1),
+(000163, '2019-10-23', 000001, 'Najathi', '566455465', '464565464', '45645645645', '2019-10-15', 000004, '456456546.00', '456456.00', '546456456.00', '546456456.00', '456546564.00', '1549915932.00', '46546456.00', '564546456.00', '564546456.00', '2617465390.00', '2052918934.00', '4456456546', '546456546', '546546', '546546456456', '2019-10-08', '2019-10-23 07:46:51', '2019-10-23 07:46:51', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `receipt`
+--
+
+CREATE TABLE `receipt` (
+  `receipt_id` int(6) UNSIGNED ZEROFILL NOT NULL,
+  `re_payee_info` varchar(255) NOT NULL,
+  `re_tele` varchar(255) NOT NULL,
+  `re_fax` varchar(255) NOT NULL,
+  `mode_of_payment` varchar(255) NOT NULL,
+  `payment_info` varchar(255) NOT NULL,
+  `re_amount` decimal(15,2) NOT NULL,
+  `re_created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `re_updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `receipt`
+--
+
+INSERT INTO `receipt` (`receipt_id`, `re_payee_info`, `re_tele`, `re_fax`, `mode_of_payment`, `payment_info`, `re_amount`, `re_created_at`, `re_updated_at`) VALUES
+(000001, 'efresfzsd', 'cszdcvxzcvxz', 'vxcvcxvc', 'xvxcvxc', '', '0.00', '2019-10-18 18:30:30', '2019-10-18 18:30:30'),
+(000002, 'ghdfgfgcf', 'gcxvbxcvcv', 'vcvcvc', 'vcvcvc', '', '0.00', '2019-10-18 18:31:42', '2019-10-18 18:31:42'),
+(000003, 'rgrgrg', 'rgrgr', 'grgr', 'grgr', '', '5454545.00', '2019-10-18 18:38:15', '2019-10-18 18:38:15'),
+(000004, 'payee details', '0774523569', '06655223369', 'mode of payment', '', '50000.00', '2019-10-18 18:40:50', '2019-10-18 18:40:50'),
+(000005, 'fgfgf', 'gfgf', 'gfgf', 'gfgfg', '', '45445.00', '2019-10-18 18:44:14', '2019-10-18 18:44:14'),
+(000006, 'yhyh', 'yhyh', 'yhy', 'hyhy', '53535', '53535358.00', '2019-10-18 18:48:30', '2019-10-18 18:48:30'),
+(000007, '865656', '5656', '565', '565', '', '456454.00', '2019-10-18 18:49:40', '2019-10-18 18:49:40'),
+(000008, '6', '696', '6', '6', '', '6.00', '2019-10-18 18:51:18', '2019-10-18 18:51:18'),
+(000009, '56565', '656', '56565', '65656', '6565656', '543656565.00', '2019-10-18 18:51:30', '2019-10-18 18:51:30'),
+(000010, 'sdfsfsf', 'sfsf', 'sfsfs', 'fsfs', 'fsfsfs', '435353.00', '2019-10-18 19:02:33', '2019-10-18 19:02:33'),
+(000011, 'sdgsdgdg', 'dgdg', 'dgdg', 'dgd', 'gdgd', '7767676.00', '2019-10-18 19:11:01', '2019-10-18 19:11:01'),
+(000012, 'sdgsdgdg', 'dgdg', 'dgdg', 'dgd', 'gdgd', '7767676.00', '2019-10-18 19:11:01', '2019-10-18 19:11:01'),
+(000013, '57575757676', '7676', '767', '676767676', '76766', '767676.00', '2019-10-18 19:11:44', '2019-10-18 19:11:44'),
+(000014, '57575757676', '7676', '767', '676767676', '76766', '767676.00', '2019-10-18 19:11:44', '2019-10-18 19:11:44'),
+(000015, '67676', '767', '676', '767', '676767', '67676.00', '2019-10-18 19:12:27', '2019-10-18 19:12:27'),
+(000016, '75776', '7676767', '6767', '676', '76767', '67676.00', '2019-10-18 19:12:43', '2019-10-18 19:12:43'),
+(000017, '86876868', '686', '8686', '86', '8686', '868686.00', '2019-10-18 19:20:48', '2019-10-18 19:20:48'),
+(000018, '6886', '86868', '686', '8686', '8686', '68686.00', '2019-10-18 19:25:46', '2019-10-18 19:25:46'),
+(000019, '67676767', '6767', '676', '767', '676', '7676.00', '2019-10-18 19:28:06', '2019-10-18 19:28:06'),
+(000020, '686868', '6868', '686', '868', '68686', '868.00', '2019-10-18 19:28:53', '2019-10-18 19:28:53'),
+(000021, '8686', '868', '6868', '686', '8686', '8686.00', '2019-10-18 19:29:07', '2019-10-18 19:29:07'),
+(000022, '676776', '767', '6767', '676', '76767', '67676.00', '2019-10-18 19:30:36', '2019-10-18 19:30:36'),
+(000023, '868686', '8686', '868', '868', '68686', '8686.00', '2019-10-18 19:31:15', '2019-10-18 19:31:15'),
+(000024, '688686', '686', '8686', '868', '686868', '6868.00', '2019-10-18 19:31:23', '2019-10-18 19:31:23'),
+(000025, '687767', '676', '767', '767', '676767', '676767.00', '2019-10-18 19:35:24', '2019-10-18 19:35:24'),
+(000026, '68686', '86868', '686', '86868', '68686', '86868.00', '2019-10-18 19:35:55', '2019-10-18 19:35:55'),
+(000027, '786868', '68686', '8686', '86868', '68686', '8686.00', '2019-10-18 19:36:08', '2019-10-18 19:36:08'),
+(000028, '68686', '86868', '686', '8686', '868686', '86868.00', '2019-10-18 19:36:17', '2019-10-18 19:36:17'),
+(000029, '6767676767', '676', '76767', '6767', '67676', '7667676.00', '2019-10-18 19:39:45', '2019-10-18 19:39:45'),
+(000032, 'vgvhgvhjcv', '686', '868', '6868', '6868', '68686.00', '2019-10-18 19:45:20', '2019-10-21 16:59:28'),
+(000035, '8686868', '686', '686', '868', '435353', '8686.00', '2019-10-19 10:13:24', '2019-10-21 16:58:11'),
+(000037, 'cbvfbgjfghf', '67676', '7676', '767', '6767', '67676.00', '2019-10-19 18:30:00', '2019-10-21 17:00:08'),
+(000038, '4244634', '6464', '64646', '464', '646464', '646464.00', '2019-10-19 18:44:28', '2019-10-19 18:44:28'),
+(000039, '6767676', '76767', '67676', '7676', '76767', '67676767676.00', '2019-10-19 18:44:53', '2019-10-19 18:44:53'),
+(000041, '767676', '7676', '6767', '676', '76767', '676767.00', '2019-10-19 18:47:21', '2019-10-19 18:47:21'),
+(000043, '8678686', '8686', '868', '686', '8686', '86868.00', '2019-10-19 18:51:55', '2019-10-19 18:51:55'),
+(000045, '565565656', '6565', '65656', '5656', '565656', '5656565.00', '2019-10-20 05:21:13', '2019-10-20 05:21:13'),
+(000046, 'MHM. Najathi', '0754141331', '06655223369', 'Cash', 'Cash', '10000.00', '2019-10-20 15:58:15', '2019-10-20 15:58:15'),
+(000047, 'hhhhhhhhhhhhhhhhhhh', 'jhjhjhjghjhjhj', 'jhhggf', 'ghj', 'jghghjjg', '1265453.99', '2019-10-21 14:05:48', '2019-10-21 16:58:53'),
+(000048, 'Mohamed', '06767767', '5668', 'cash', 'cash', '100000.00', '2019-10-22 13:40:07', '2019-10-22 13:40:22');
 
 -- --------------------------------------------------------
 
@@ -207,7 +268,7 @@ INSERT INTO `supplierr` (`supp_id`, `supp_name`, `supp_tele`, `supp_email`, `sup
 (000010, 'fgfgfg', 'fggfgfg', 'fgfg', 'gfgfgfgfg', NULL, '2019-08-18 20:07:35', '2019-09-03 05:40:22'),
 (000011, 'Nazzaha', 'fgfgf', 'gfgf', 'gfgfg', NULL, '2019-08-18 20:07:35', '2019-09-03 05:40:22'),
 (000012, 'fgfgf', 'gfgffgf', 'gfgfg', 'fgfgfg', NULL, '2019-08-18 20:07:35', '2019-09-03 05:40:22'),
-(000013, 'vfgfg', 'fgfgfg', 'fgfg', 'fgf', NULL, '2019-08-18 20:23:21', '2019-09-03 05:40:22');
+(000013, 'rgtyhhhjughhhghhghghgghghghg', 'fgfgfg', 'fgfg', 'fgf', '', '2019-08-18 20:23:21', '2019-10-21 17:19:03');
 
 -- --------------------------------------------------------
 
@@ -221,23 +282,42 @@ CREATE TABLE `users_acc` (
   `Lastname` varchar(255) NOT NULL,
   `U_Email` varchar(255) NOT NULL,
   `U_Password` varchar(255) NOT NULL,
-  `PhNo` varchar(255) NOT NULL,
   `Gender` varchar(255) NOT NULL,
+  `user_role_id` int(1) NOT NULL DEFAULT 0,
   `DTime` timestamp NOT NULL DEFAULT current_timestamp(),
   `U_updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `PhNo` varchar(255) DEFAULT NULL,
   `U_Address` varchar(255) DEFAULT NULL,
   `Designation` varchar(255) DEFAULT NULL,
-  `Image` varchar(255) DEFAULT NULL,
-  `user_role_id` int(1) NOT NULL DEFAULT 0
+  `Image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users_acc`
 --
 
-INSERT INTO `users_acc` (`U_ID`, `Firstname`, `Lastname`, `U_Email`, `U_Password`, `PhNo`, `Gender`, `DTime`, `U_updated_at`, `U_Address`, `Designation`, `Image`, `user_role_id`) VALUES
-(22, 'Mohamed', 'Najathi', 'najathi@live.com', '$2y$10$52Eg6xOLUFrwbORwN0hoy.hgL/VBsV0aftmExoFxwuAm4nxIHMxWW', '0754141331', 'Male', '2019-07-21 06:34:10', '2019-09-03 05:43:13', NULL, NULL, NULL, 1),
-(23, 'Mohamed', 'Naharni', 'naharni@gmail.com', '$2y$10$8Zba1sfuOtjA3wh/5BDlaOm6VgSDbdPuqZrr3FvxSObTlXETmbDuu', '0756007036', 'Male', '2019-07-21 06:56:09', '2019-09-03 05:54:10', NULL, NULL, NULL, 0);
+INSERT INTO `users_acc` (`U_ID`, `Firstname`, `Lastname`, `U_Email`, `U_Password`, `Gender`, `user_role_id`, `DTime`, `U_updated_at`, `PhNo`, `U_Address`, `Designation`, `Image`) VALUES
+(22, 'Mohamed', 'Najathi', 'najathi@live.com', '$2y$10$52Eg6xOLUFrwbORwN0hoy.hgL/VBsV0aftmExoFxwuAm4nxIHMxWW', 'Male', 1, '2019-07-21 06:34:10', '2019-09-03 05:43:13', '0754141331', NULL, NULL, NULL),
+(23, 'Mohamed', 'Naharni', 'naharni@gmail.com', '$2y$10$8Zba1sfuOtjA3wh/5BDlaOm6VgSDbdPuqZrr3FvxSObTlXETmbDuu', 'Male', 0, '2019-07-21 06:56:09', '2019-09-03 05:54:10', '0756007036', NULL, NULL, NULL),
+(33, 'bgfbf', 'hgdfhdrhrd', 'najathi777@live.com', '$2y$10$X4yVE7k5QZ0614o08jm7OuCq2C6KQikwP.E5FPbwfXJb0F5FaeLra', 'Male', 0, '2019-10-20 18:54:09', '2019-10-20 18:55:26', NULL, NULL, NULL, NULL),
+(34, 'fhfh', 'gfhfh', 'wfewegfwefgw@gegege', '$2y$10$aBsXhtEc70YE7CBU72wNjed1mfqTrjfqp/F8w.JrzEFFljeVm/qqa', 'Female', 0, '2019-10-20 18:55:56', '2019-10-20 18:55:56', NULL, NULL, NULL, NULL),
+(35, 'hjufdjngv', 'jg', 'jkfhgj@ghjdgghj', '$2y$10$UY2Q45C2ZbH9vgyLBZctI.cZ5dR4gpZsIThEtIuePC/1rdW0uTZ/.', 'Female', 1, '2019-10-21 01:41:15', '2019-10-21 01:41:15', NULL, NULL, NULL, NULL),
+(36, '45645', '4565454', '45456546@658686', '$2y$10$fwG5kyxd8wExdvNdjthovO.RVlvG/oFvq///Y8U4eyV9Rr3vghRgK', 'Male', 0, '2019-10-21 01:45:52', '2019-10-21 01:45:52', NULL, NULL, NULL, NULL),
+(37, 'Mohamed', '55545', 'ghjgh@hjftuj', '$2y$10$lH9bKyWRHqraLKtwf9ZoZe4Z7V.DwH3FE/TkIba.sYZU7epBoaiVS', 'Male', 0, '2019-10-21 01:46:15', '2019-10-21 01:46:15', NULL, NULL, NULL, NULL),
+(38, '56+45+65', '+56+56+56', '4564565@42565', '$2y$10$kyYLmWX8UsyeEp.MAKHY1uq90H4c.iZ520SY6zApBjlExqLMGqlbS', 'Male', 0, '2019-10-21 01:47:39', '2019-10-21 01:47:39', NULL, NULL, NULL, NULL),
+(39, '56565', '6+56+56+', '6546546@65655', '$2y$10$KkX1wxevKW8cXRFKrFEYIeW8QGY6izg.Il1c5EOe9QmxUgj.s0jpm', 'Male', 0, '2019-10-21 01:48:09', '2019-10-21 01:48:09', NULL, NULL, NULL, NULL),
+(40, '56554', '6546456546456', '45645654645@jkhjkhgju', '$2y$10$9i5TP3MsDPYPGGXLxZgWxOPhO55SMbSXx1qG/Cu2w1BPDvSeux9qa', 'Female', 1, '2019-10-21 02:10:16', '2019-10-21 02:10:16', NULL, NULL, NULL, NULL),
+(41, 'Mohamed', 'Thahlan', 'thahlan@live.com', '$2y$10$bALC/NyoHgir.hAWiD8Ib.F93Q8mDnCKHi/DOpqyHToMfYRizFklG', 'Male', 0, '2019-10-21 02:11:31', '2019-10-21 02:11:31', NULL, NULL, NULL, NULL),
+(42, 'Mohamed', 'Thahlan', 'thahlan@live.com522564', '$2y$10$z1M2Q.v56U7pMxG3GxaFmua4Ne/8kRhRxsmh8e5k3dUPWuLZIuxgy', 'Male', 0, '2019-10-21 02:24:48', '2019-10-21 02:24:48', NULL, NULL, NULL, NULL),
+(43, 'Mohamed', 'Thahlan', 'thahlan@live.comghghgh', '$2y$10$XP78WIKfn0Fm.VUYID83IOmbRXd9sw8OQPWI/NUCY7nxnl5Bh2me.', 'Male', 0, '2019-10-21 02:26:51', '2019-10-21 02:26:51', NULL, NULL, NULL, NULL),
+(44, 'Mohamed', 'Thahlan', 'thabvnbvnbvbvhlan@live.combf', '$2y$10$uWqZAV3rMsxw2pqz6duEdeQZyxAmOl9n9kAYWdz7biF7xa95ZLNGO', 'Male', 0, '2019-10-21 02:28:03', '2019-10-21 02:28:03', NULL, NULL, NULL, NULL),
+(45, 'jhgjghjg', 'hj', 'hjghjghjghj@gjvgj', '$2y$10$HdISOu8xNPY5KpbUqjAhregrCxTCGB3v7Bc3xQXqo24oZ1303arb6', 'Male', 0, '2019-10-21 02:28:37', '2019-10-21 02:28:37', NULL, NULL, NULL, NULL),
+(46, 'Mohamed', 'Thahlan', 'thahlcvvcbccvan@live.com', '$2y$10$IUNmjp4ktLN8SRZzRP0qGeN0KrfpGkzgFE/RrIabjlmmvtKJoVygS', 'Female', 0, '2019-10-21 02:30:16', '2019-10-21 02:30:16', NULL, NULL, NULL, NULL),
+(48, 'ryhgfjghj', 'hjghjghjgh', 'gfgfdh@rfghdfhg', '$2y$10$sj6yrxS3GGgEVsoFeJGR1u8ks1kofMxezuHi3vpZckMw/0KFa3Bji', 'Male', 0, '2019-10-21 02:33:47', '2019-10-21 02:33:47', NULL, NULL, NULL, NULL),
+(50, 'bhjhjhjgh', 'hjghghhj', 'hjhjh@vgnggg', '$2y$10$yHtzcEMWAaSEZFIPWskg2uhS8Dj1Q5IL0obOK5Sg18twxuzViG8xO', 'Male', 0, '2019-10-21 02:35:58', '2019-10-21 02:35:58', NULL, NULL, NULL, NULL),
+(54, 'hklhkuik', 'uuikuikui', 'kuikuik@hjjkvdfdfd', '$2y$10$5fAoupq5LwuldLKOI4zOw.hzMBxiDTfKRlXfpMjAIUZ6ShwM3cu6C', 'Male', 0, '2019-10-21 04:33:30', '2019-10-21 12:41:15', NULL, NULL, NULL, NULL),
+(65, 'fjgg', 'jjgfjfdjfjdf', 'jgjgf@jgfgh', '$2y$10$jYvPyABdzn.BQwMnMt3LMujQky.4N1uW2SnApcvhKynuZehxzoZfK', 'Male', 0, '2019-10-21 14:00:49', '2019-10-21 14:00:49', NULL, NULL, NULL, NULL),
+(66, 'ghghg', 'gfhfh', 'jkjkkjkjn@5455555', '$2y$10$sZ7gwRW3CzqhPq1GSP6Z1eJCvFOD1AojEtCGrZDQgOPoxsucis/F6', 'Male', 0, '2019-10-22 15:01:53', '2019-10-22 15:01:53', NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -277,6 +357,12 @@ ALTER TABLE `exchange_order`
   ADD KEY `supplier` (`supplier`);
 
 --
+-- Indexes for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD PRIMARY KEY (`receipt_id`);
+
+--
 -- Indexes for table `supplierr`
 --
 ALTER TABLE `supplierr`
@@ -309,7 +395,13 @@ ALTER TABLE `customer`
 -- AUTO_INCREMENT for table `exchange_order`
 --
 ALTER TABLE `exchange_order`
-  MODIFY `ex_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
+  MODIFY `ex_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+
+--
+-- AUTO_INCREMENT for table `receipt`
+--
+ALTER TABLE `receipt`
+  MODIFY `receipt_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `supplierr`
@@ -321,7 +413,7 @@ ALTER TABLE `supplierr`
 -- AUTO_INCREMENT for table `users_acc`
 --
 ALTER TABLE `users_acc`
-  MODIFY `U_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `U_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- Constraints for dumped tables

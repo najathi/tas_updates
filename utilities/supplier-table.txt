@@ -1,5 +1,4 @@
 supplierr
-		
 
 supp_id
 supp_name

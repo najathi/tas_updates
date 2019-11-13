@@ -1,0 +1,11 @@
+payment_voucher
+
+payment_vou_id
+             py_payee_info
+             py_tele
+             py_fax
+             py_mode_of_payment
+             py_payment_info
+             py_amount
+             py_created_at
+             py_updated_at

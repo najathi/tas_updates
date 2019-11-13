@@ -3,102 +3,22 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-include_once 'includes/dbh.inc.php';
-include_once 'includes/authenticate.inc.php';
-include_once 'includes/ses_record_set.inc.php';
+include_once 'includes/connection/dbh.inc.php';
+include_once 'includes/authentication/authenticate.inc.php';
+include_once 'includes/authentication/ses_record_set.inc.php';
 include_once 'lib/address/address_divider.inc.php';
-include_once 'includes/select-cus-id.inc.php';
-include_once 'includes/select-supp-id.inc.php';
+include_once 'includes/customer/select-cus-id.inc.php';
+include_once 'includes/supplier/select-supp-id.inc.php';
 
-
-
-/* // Get session data
-$sessData = !empty($_SESSION['sessData'])?$_SESSION['sessData']:'';
-
-// Get status message from session
-if (!empty($sessData['status']['msg'])) {
-    $statusMsg = $sessData['status']['msg'];
-    $statusMsgType = $sessData['status']['type'];
-    unset($_SESSION['sessData']['status']);
-}
-
-// Load pagination class
-require_once 'lib/mysqli_extension/Pagination.class.php';
-
-// Load and initialize database class
-require_once 'lib/mysqli_extension/DB.class.php';
-$db = new DB();
-
-// Page offset and limit
-$perPageLimit = 10;
-$offset = !empty($_GET['page'])?(($_GET['page']-1)*$perPageLimit):0;
-
-// Get search keyword
-$searchKeyword = !empty($_GET['sq'])?$_GET['sq']:'';
-$searchStr = !empty($searchKeyword)?'?sq='.$searchKeyword:'';
-
-// Search DB query
-$searchArr = '';
-if (!empty($searchKeyword)) {
-    $searchArr = array(
-        'booking_ref' => $searchKeyword,
-        'xo_date' => $searchKeyword,
-        'customer' => $searchKeyword,
-        'pass_name' => $searchKeyword,
-        'supplier' => $searchKeyword
-    );
-}
-
-// Get count of the exchange_order
-$con = array(
-    'like_or' => $searchArr,
-    'return_type' => 'count'
-);
-$rowCount = $db->getRows('exchange_order', $con);
-
-// Initialize pagination class
-$pagConfig = array(
-    'baseURL' => 'search-ex-order.php'.$searchStr,
-    'totalRows' => $rowCount,
-    'perPage' => $perPageLimit
-);
-$pagination = new Pagination($pagConfig);
-
-// Get exchange_order from database
-$con = array(
-    'like_or' => $searchArr,
-    'start' => $offset,
-    'limit' => $perPageLimit,
-    'order_by' => 'booking_ref ASC',
-);
-$exchange_order = $db->getRows('exchange_order', $con); */
-
+// a_config.php template file
+include('layouts/a_config.php');
 
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Invoice - TAS</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/metisMenu.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.min.css">
-    <!-- amchart css -->
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="assets/css/typography.css">
-    <link rel="stylesheet" href="assets/css/default-css.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
-    <!-- modernizr css -->
-    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <?php include('layouts/head-tag-contents.php'); ?>
 
     <!-- tax-calc.js -->
     <script src="assets/js/calc/tax-calc.js"></script>
@@ -124,10 +44,9 @@ $exchange_order = $db->getRows('exchange_order', $con); */
         <!-- sidebar menu area start -->
         <div class="sidebar-menu">
             <div class="sidebar-header">
-                <div class="logo">
-                    <a href="/"><img src="assets/images/header/header.png" alt="logo"></a>
-                </div>
+                <?php include("layouts/header-logo.php"); ?>
             </div>
+            <?php include("layouts/main_menu.php"); ?>
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
@@ -221,7 +140,7 @@ $exchange_order = $db->getRows('exchange_order', $con); */
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname']; ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="includes/logout.inc.php">Log Out</a>
+                                <?php include("layouts/logout.php"); ?>
                             </div>
                         </div>
                     </div>
@@ -274,17 +193,15 @@ $exchange_order = $db->getRows('exchange_order', $con); */
                             <div class="single-table">
                                 <div class="table-responsive">
                                     <a style="cursor:pointer;" id="onDivRef" onclick="onDivRefresh()"><i class="fa fa-refresh"></i></a>
-                                    <table style="table-layout:auto;" id="cusTable" class="table table-hover progress-table text-center">
+                                    <table style="table-layout:auto;" id="InvTable" class="table table-hover progress-table text-center">
                                         <thead class="text-uppercase">
                                             <tr style="background:#000000; color:#fff; margin-top:1rem;">
                                                 <th scope="col">#</th>
-                                                <th scope="col">Booking Reference</th>
+                                                <th scope="col">XO No</th>
                                                 <th scope="col">XO Date</th>
                                                 <th scope="col">Customer</th>
-                                                <th scope="col">Passenger Name</th>
-                                                <th scope="col">Ticket No.</th>
                                                 <th scope="col">Supplier</th>
-                                                <th scope="col">Invoice</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -543,8 +460,7 @@ $exchange_order = $db->getRows('exchange_order', $con); */
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2019. All right reserved. System Developed by <a target="_blank" href="https://ideageek.net/
-">ideaGeek</a>.</p>
+                <?php include("layouts/footer.php"); ?>
             </div>
         </footer>
         <!-- footer area end-->
@@ -753,89 +669,15 @@ $exchange_order = $db->getRows('exchange_order', $con); */
     <script>
         $(document).ready(function() {
 
-            // fetch data to #editData Modal
-            $(document).on('click', '.editBtn', function() {
-                var ex_id = $(this).attr("id");
-                $.ajax({
-                    url: "includes/fetch-invoice.inc.php",
-                    method: "POST",
-                    data: {
-                        ex_id: ex_id
-                    },
-                    dataType: "json",
-                    success: function(data) {
-
-                        console.log(data);
-
-                        $('#editData').modal('show');
-
-                        $('#ex_id').val(data.ex_id);
-                        $('#xo_date').val(data.xo_date);
-                        $('#customer').val(data.customer);
-                        $('#counter_staff').val(data.counter_staff);
-                        $('#pass_name').val(data.pass_name);
-                        $('#ticket_no').val(data.ticket_no);
-                        $('#booking_ref').val(data.booking_ref);
-                        $('#ticket_date').val(data.ticket_date);
-                        $('#supplier').val(data.supplier);
-                        $('#basicc').val(data.basicc);
-                        $('#yq').val(data.yq);
-                        $('#yr').val(data.yr);
-                        $('#tax_3').val(data.tax_3);
-                        $('#tax_4').val(data.tax_4);
-                        $('#total_tax').val(data.total_tax);
-                        $('#supp_charge').val(data.supp_charge);
-                        $('#service_amt').val(data.service_amt);
-                        $('#net_profit').val(data.net_profit);
-                        $('#net_due').val(data.net_due);
-                        $('#net_to_supplier').val(data.net_to_supplier);
-                        $('#from_to').val(data.from_to);
-                        $('#class_code').val(data.class_code);
-                        $('#airline_code').val(data.airline_code);
-                        $('#flight_no').val(data.flight_no);
-                        $('#depart_date').val(data.depart_date);
-                        $('#insert').val("Update");
-
-                    }
-                });
-            });
-
-            // Edit the record
-            $('#insert_form').on("submit", function(event) {
-                event.preventDefault();
-                $.ajax({
-                    url: "includes/invoice-edit.inc.php",
-                    method: "POST",
-                    data: $('#insert_form').serialize(),
-                    beforeSend: function() {
-                        $('#insert').val("Inserting");
-                    },
-                    success: function(data) {
-                        $('#insert_form')[0].reset();
-                        $('#editData').modal('hide');
-                        $('#alert-info').show();
-                        $('#alert-info').html('<strong>Well done!</strong> A Record has been Updated.');
-                        $('#alert-info').addClass('alert alert-info');
-                        dataTable.ajax.reload(null, false);
-                    },
-                    error: function(err) {
-                        $('#alert-danger').show();
-                        $('#alert-danger').addClass('alert alert-danger');
-                        $('#alert-danger').html('<strong>Oh snap!</strong> Sorry, that Record wasn\'t Updated <b>Try Again</b>');
-                    }
-                });
-
-            });
-
             // fetch data to #viewInData Modal
             $(document).on('click', '.viewBtn', function() {
-                var ex_id = $(this).attr("id");
-                if (ex_id != '') {
+                var invoice_id = $(this).attr("id");
+                if (invoice_id != '') {
                     $.ajax({
-                        url: "includes/select-invoice.inc.php",
+                        url: "includes/invoice/select-invoice.inc.php",
                         method: "POST",
                         data: {
-                            ex_id: ex_id
+                            invoice_id: invoice_id
                         },
                         success: function(data) {
                             $('#in-view-data').html(data);
@@ -847,13 +689,13 @@ $exchange_order = $db->getRows('exchange_order', $con); */
 
             // delete the record
             $(document).on('click', '.delete', function() {
-                var ex_id = $(this).attr("id");
+                var invoice_id = $(this).attr("id");
                 if (confirm("Are you sure you want to delete this?")) {
                     $.ajax({
-                        url: "includes/delete-invoice.inc.php",
+                        url: "includes/invoice/delete-invoice.inc.php",
                         method: "POST",
                         data: {
-                            ex_id: ex_id
+                            invoice_id: invoice_id
                         },
                         success: function(data) {
                             $('#alert-warning').show();
@@ -875,12 +717,12 @@ $exchange_order = $db->getRows('exchange_order', $con); */
             // make invoice button
             $(document).on('click', '.mk-invoice', function() {
                 if (confirm("Do you make invoice?")) {
-                    var ex_id = $(this).attr("id");
+                    let invoice_id = $(this).attr("id");
                     $.ajax({
-                        url: "includes/make-invoice-btn.inc.php",
+                        url: "includes/invoice/make-invoice-btn.inc.php",
                         method: "POST",
                         data: {
-                            ex_id: ex_id
+                            invoice_id: invoice_id
                         },
                         success: function(data) {
                             $('#alert-success').show();
@@ -903,12 +745,12 @@ $exchange_order = $db->getRows('exchange_order', $con); */
             // Cancel invoice button
             $(document).on('click', '.cancel-invoice', function() {
                 if (confirm("Do you want to cancel the invoice?")) {
-                    var ex_id = $(this).attr("id");
+                    var invoice_id = $(this).attr("id");
                     $.ajax({
-                        url: "includes/cancel-invoice-btn.inc.php",
+                        url: "includes/invoice/cancel-invoice-btn.inc.php",
                         method: "POST",
                         data: {
-                            ex_id: ex_id
+                            invoice_id: invoice_id
                         },
                         success: function(data) {
                             $('#alert-warning').show();
@@ -928,7 +770,7 @@ $exchange_order = $db->getRows('exchange_order', $con); */
             });
 
             // data table
-            var dataTable = $('#cusTable').DataTable({
+            var dataTable = $('#InvTable').DataTable({
                 language: {
                     searchPlaceholder: "Search Details"
                 },
@@ -938,11 +780,11 @@ $exchange_order = $db->getRows('exchange_order', $con); */
                 "order": [],
                 "autoWidth": false,
                 "ajax": {
-                    url: "includes/fetch-invoice-dt.inc.php",
+                    url: "includes/invoice/fetch-invoice-dt.inc.php",
                     type: "POST"
                 },
                 "columnDefs": [{
-                    "targets": [0, 7],
+                    "targets": [0, 4],
                     "orderable": false,
                 }, ]
             });

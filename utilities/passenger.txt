@@ -1,11 +1,8 @@
 passenger
 
-'$exch_order', '$p_name', '$ticket_no', '$ticket_date', '$basicc', '$yq', '$yr', '$tax_3', '$tax_4', '$total_tax', '$supp_charge', '$service_amt', '$net_profit', '$net_due', '$net_to_supplier', '$from_to', '$class_code', '$airline_code', '$flight_no', '$depart_date'
-
-exch_order, p_name, ticket_no, ticket_date, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date
-
 passenger_id
 exch_order
+booking_ref
 p_name
 ticket_no
 ticket_date

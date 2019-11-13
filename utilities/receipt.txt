@@ -1,7 +1,11 @@
 receipt
 
 receipt_id
-exc_order
-is_receipt
+re_customer
+re_tele
+re_fax
+mode_of_payment
+payment_info
+re_amount
 re_created_at
 re_updated_at
