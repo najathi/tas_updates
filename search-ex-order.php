@@ -239,7 +239,7 @@ include('layouts/a_config.php');
                                             <form method="post" id="update_pass_form">
                                                 <div class="modal-body">
                                                     <div class="row">
-                                                        <div class="col-lg-6 col-ml-12">
+                                                        <div class="col-lg-12 col-ml-12">
                                                             <div class="row">
 
                                                                 <!-- Add Ticket Infromation start -->
@@ -302,7 +302,7 @@ include('layouts/a_config.php');
                                                             </div>
                                                         </div>
 
-                                                        <div class="col-lg-6 col-ml-12">
+                                                        <div class="col-lg-12 col-ml-12">
                                                             <div class="row">
                                                                 <!-- Fare Section start -->
                                                                 <div class="col-12">
@@ -441,7 +441,7 @@ include('layouts/a_config.php');
                                                                 </div>
                                                             </div>
                                                             <!-- Coupon Information start -->
-                                                            <div class="col-lg-6 col-ml-12">
+                                                            <div class="col-lg-12 col-ml-12">
                                                                 <div class="row">
                                                                     <div class="col-12">
                                                                         <div class="card">
@@ -565,7 +565,7 @@ include('layouts/a_config.php');
                                                 <form method="post" id="insert_form">
                                                     <div class="modal-body">
                                                         <div class="row">
-                                                            <div class="col-lg-6 col-ml-12">
+                                                            <div class="col-lg-12 col-ml-12">
                                                                 <div class="row">
                                                                     <!-- Add Ex-Order Information start -->
                                                                     <div class="col-12">
