@@ -40,56 +40,6 @@ include('layouts/a_config.php');
                 <?php include("layouts/header-logo.php"); ?>
             </div>
             <?php include("layouts/main_menu.php"); ?>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li>
-                                <a href="/" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-layout-sidebar-left"></i><span>Purchase</span></a>
-                                <ul class="collapse">
-                                    <li><a href="exchange-order">Exchange Order</a></li>
-                                    <li><a href="search-ex-order">Search</a></li>
-                                    <!-- <li><a href="#">Logs</a></li> -->
-                                    <li><a href="invoice">Invoice</a></li>
-                                    <li><a href="receipt">Reciept</a></li>
-                                </ul>
-                            </li>
-                            <?php
-                            if ($_SESSION['user_role_id'] == 1) {
-                                ?>
-                                <li class="active">
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-certificate"></i><span>Supplier</span></a>
-                                    <ul class="collapse">
-                                        <li class="active"><a href="add-supplier">Add Supplier</a></li>
-                                        <li><a href="search-supplier">Search</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-users"></i><span>Customer</span></a>
-                                    <ul class="collapse">
-                                        <li><a href="add-customer">Add Customer</a></li>
-                                        <li><a href="search-customer">Search</a></li>
-                                    </ul>
-                                </li>
-                                <div style="margin:1rem;"></div>
-                                <div style="border:.5px dashed #aaa; opacity:.3; margin:0 1rem;"></div>
-                                <div style="margin:1rem;"></div>
-                                <li>
-                                    <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i><span>User Account</span></a>
-                                    <ul class="collapse">
-                                        <li><a href="search-user">Search</a></li>
-                                    </ul>
-                                </li>
-                            <?php
-                            }
-                            ?>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -127,7 +77,7 @@ include('layouts/a_config.php');
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname'];
                                                                                             ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <?php include("layouts/logout.php"); ?>
+                                <?php include("layouts/drop-down.php"); ?>
                             </div>
                         </div>
                     </div>
@@ -417,6 +367,18 @@ include('layouts/a_config.php');
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            setTimeout(function () {
+                window.history.pushState({}, document.documentURI, "/" + "add-supplier");
+                $('.alert').fadeOut("slow");
+            },8000);
+        });
+
+    </script>
+
 </body>
 
 </html>

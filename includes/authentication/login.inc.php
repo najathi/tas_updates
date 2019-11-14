@@ -8,7 +8,6 @@ if (isset($_POST['submitLogin'])) {
     $email = mysqli_real_escape_string($conn, $_POST['U_Email']);
     $pwd = mysqli_real_escape_string($conn, $_POST['U_Password']);
 
-
     $MM_redirectLoginSuccess = "/";
     $MM_redirectLoginFailed = "../../login?login=error";
 
@@ -36,7 +35,6 @@ if (isset($_POST['submitLogin'])) {
                     $_SESSION['Firstname'] = $row['Firstname'];
                     $_SESSION['Lastname'] = $row['Lastname'];
                     $_SESSION['U_Email'] = $row['U_Email'];
-                    $_SESSION['U_Password'] = $row['U_Password'];
                     $_SESSION['PhNo'] = $row['PhNo'];
                     $_SESSION['Gender'] = $row['Gender'];
                     $_SESSION['DTime'] = $row['DTime'];

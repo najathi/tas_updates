@@ -78,7 +78,7 @@ include('layouts/a_config.php');
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname'];
                                                                                             ?> <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <?php include("layouts/logout.php"); ?>
+                                <?php include("layouts/drop-down.php"); ?>
                             </div>
                         </div>
                     </div>
@@ -368,6 +368,18 @@ include('layouts/a_config.php');
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+
+    <script>
+
+        $(document).ready(function(){
+            setTimeout(function () {
+                window.history.pushState({}, document.documentURI, "/" + "add-customer");
+                $('.alert').fadeOut("slow");
+            },8000);
+        });
+
+    </script>
+
 </body>
 
 </html>

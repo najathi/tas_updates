@@ -2,8 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2dfc4f27-01bb-4503-9b76-ed59f80f18e5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/layouts/drop-down.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add-customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/add-customer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/add-supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/add-supplier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exchange-order.php" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/authentication/login.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/authentication/login.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/a_config.php" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/a_config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-voucher.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment-voucher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/receipt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-customer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search-ex-order.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-ex-order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search-supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-supplier.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/users-control.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,6 +126,7 @@
       <workItem from="1573405248697" duration="13651000" />
       <workItem from="1573476372681" duration="6308000" />
       <workItem from="1573620625956" duration="9749000" />
+      <workItem from="1573659287175" duration="13380000" />
     </task>
     <servers />
   </component>

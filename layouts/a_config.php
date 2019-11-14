@@ -72,6 +72,14 @@ switch ($_SERVER["SCRIPT_NAME"]) {
         $CURRENT_PAGE = "Payment Voucher";
         $PAGE_TITLE = "Payment Voucher";
         break;
+    case "/change-password.php":
+        $CURRENT_PAGE = "Change Password";
+        $PAGE_TITLE = "Change Password";
+        break;
+    case "/my-account.php":
+        $CURRENT_PAGE = "My Account";
+        $PAGE_TITLE = "My Account";
+        break;
     default:
         $CURRENT_PAGE = "Dashboard";
         $PAGE_TITLE = "Dashboard";
