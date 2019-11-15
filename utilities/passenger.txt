@@ -3,6 +3,7 @@ passenger
 passenger_id
 exch_order
 booking_ref
+pass_remark
 p_name
 ticket_no
 ticket_date

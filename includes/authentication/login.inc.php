@@ -38,6 +38,7 @@ if (isset($_POST['submitLogin'])) {
                     $_SESSION['PhNo'] = $row['PhNo'];
                     $_SESSION['Gender'] = $row['Gender'];
                     $_SESSION['DTime'] = $row['DTime'];
+                    $_SESSION['Image'] = $row['Image'];
                     $_SESSION['user_role_id'] = $row['user_role_id'];
                     $_SESSION['loggedin'] = true;
 

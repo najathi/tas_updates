@@ -12,10 +12,29 @@ include('layouts/a_config.php');
 
 ?>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <?php include('layouts/head-tag-contents.php'); ?>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.4/croppie.min.css">
+
+    <style>
+
+        .border-img{
+            background: #000;
+            width: inherit;
+            height: 50px;
+            opacity: 0.8;
+            transition: all 1s;
+        }
+
+        .list-group{
+            font-size: 1.5rem;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -69,9 +88,7 @@ include('layouts/a_config.php');
                 </div>
                 <div class="col-sm-6 clearfix">
                     <div class="user-profile pull-right">
-                        <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $row['Lastname'];
-                            ?> <i class="fa fa-angle-down"></i></h4>
+                        <?php include("layouts/avatar.php"); ?>
                         <div class="dropdown-menu">
                             <?php include("layouts/drop-down.php"); ?>
                         </div>
@@ -101,41 +118,192 @@ include('layouts/a_config.php');
             }
             ?>
 
-            <div class="row">
+            <div style="margin-top:1rem;" id="alert-info" role="alert">
+            </div>
+
+            <div style="margin-top:1rem;" id="alert-success" role="alert">
+            </div>
+
+            <div style="margin-top:1rem;" id="alert-danger" role="alert">
+            </div>
+
+            <div style="margin-top:1rem;" id="alert-warning" role="alert">
+            </div>
+
+            <div class="row" id="firstDiv">
                 <div class="col-lg-12 col-ml-12">
                     <div class="row">
-                                    <div class="col-lg-3 mt-5">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <p class="text-center">
-                                                    <img width="200px"
-                                                         class="img-responsive avatar-view"
-                                                         src="https://images.pexels.com/photos/1391498/pexels-photo-1391498.jpeg?cs=srgb&dl=beautiful-beauty-blurred-background-1391498.jpg&fm=jpg"
-                                                         alt="Avatar"
-                                                         title="Change the avatar">
-                                                <h5 class="text-center mt-3"><?php echo $row['Firstname'].' '.$row['Lastname'] ;?></h5>
-                                                </p>
+                        <div class="col-lg-3 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="text-center">
+                                        <a data-toggle="modal" data-target="#chgpfl" style="cursor: pointer;"><img
+                                             class="img-responsive avatar-view border border-primary mx-auto d-block"
+                                             src="<?php echo ($row['Image'] == '') ? 'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909__340.png' : 'assets/images/profile/'.$row['Image']; ?>"
+                                             alt="Avatar"
+                                             title="Change the avatar" onmouseover="openDiv()" onmouseleave="closeDiv()"></a>
+                                    <div class="border-img" id="auto-border">
+                                        <h5 class="text-center p-lg-2 text-white font-weight-bold">Change Profile</h5>
+                                    </div>
+                                    <h5 class="text-center mt-3"><?php echo $row['Firstname'] . ' ' . $row['Lastname']; ?></h5>
+                                    </p>
 
-                                                <a class="btn btn-block btn-sm"><i class="fas fa-edit fa-2x"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 mt-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="pull-right"><a class="btn btn-block btn-sm editBtn" data-toggle="modal" data-target="#myAccInfo"><i class="fas fa-edit fa-2x"></i></a></div>
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><i class="fas fa-user"></i>
+                                            &nbsp;&nbsp;<?php echo $row['Firstname'] . ' ' . $row['Lastname']; ?></li>
+                                        <li class="list-group-item"><i class="fas fa-envelope-open-text"></i> &nbsp;&nbsp;<?php echo $row['U_Email']; ?>
+                                        </li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i>
+                                            &nbsp;&nbsp;<?php echo $row['PhNo']; ?></li>
+                                        <li class="list-group-item"><i class="fas fa-genderless"></i>
+                                            &nbsp;&nbsp;<?php echo $row['Gender']; ?></li>
+                                        <li class="list-group-item"><i class="fas fa-map-marker-alt"></i>
+                                            &nbsp;&nbsp;<?php echo $row['U_Address']; ?></li>
+                                        <li class="list-group-item"><i class="fas fa-briefcase"></i>
+                                            &nbsp;&nbsp;<?php echo $row['Designation']; ?></li>
+                                        <li class="list-group-item"><i class="fas fa-user-tag"></i>
+                                            &nbsp;&nbsp;<?php echo ($row['user_role_id'] == 1) ? 'Administrator' : 'Standard User'; ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Modal My Account -->
+                        <div class="modal fade" id="myAccInfo" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLongTitle">My Account Info</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="updateAcc" method="post" enctype="multipart/form-data">
+                                            <div class="form-group mb-4">
+                                                <label for="Firstname">First Name</label>
+                                                <input type="text" class="form-control" placeholder="First Name" name="Firstname"
+                                                       id="Firstname" required>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="Lastname">Last Name</label>
+                                                <input type="text" class="form-control" placeholder="Last Name" name="Lastname"
+                                                       id="Lastname" required>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="U_Email">Email Address</label>
+                                                <input type="email" class="form-control" placeholder="Email Address"
+                                                       name="U_Email" id="U_Email" required>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="PhNo">Phone Number</label>
+                                                <input type="text" class="form-control" placeholder="Phone Number"
+                                                       name="PhNo" id="PhNo" required>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="Gender">Gender</label>
+                                                <select class="custom-select" name="Gender" id="Gender" required>
+                                                    <option value="">Open this select menu</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="U_Address">Address</label>
+                                                <input type="text" class="form-control" placeholder="Address" name="U_Address"
+                                                       id="U_Address" required>
+                                            </div>
+                                            <div class="form-group mb-4">
+                                                <label for="Designation">Designation</label>
+                                                <input type="text" class="form-control" placeholder="Designation"
+                                                       name="Designation" id="Designation" required>
+                                            </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                        <button type="submit" name="update" id="update" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Modal My Account -->
+
+                    <!-- Modal Open Change Profile -->
+                    <div class="modal fade" id="chgpfl" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">My Account Info</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form id="updateAcc" method="post" enctype="multipart/form-data">
+                                        <!--<div class="form-group mb-4">
+                                            <label for="Image">Profile Image</label>
+                                            <input type="file" class="form-control" name="Image"
+                                                   id="Image" required>
+                                        </div>-->
+
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading mb-3">Select Profile Image</div>
+                                            <div class="panel-body">
+                                                <input class="form-control" type="file" name="upload_image" id="upload_image" accept="image/*" />
+                                                <br />
+                                                <div id="uploaded_image"></div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-9 mt-5">
-                                        <div class="card">
-                                            <div class="card-body">
-                                                <ul class="list-group">
-                                                    <li class="list-group-item"><i class="fas fa-user"></i> &nbsp;&nbsp;<?php echo $row['Firstname'].' '.$row['Lastname'] ;?></li>
-                                                    <li class="list-group-item"><i class="fas fa-envelope-open-text"></i>  &nbsp;&nbsp;<?php echo $row['U_Email'];?></li>
-                                                    <li class="list-group-item"><i class="fa fa-phone"></i> &nbsp;&nbsp;<?php echo $row['PhNo'];?></li>
-                                                    <li class="list-group-item"><i class="fas fa-genderless"></i> &nbsp;&nbsp;<?php echo $row['Gender'];?></li>
-                                                    <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;<?php echo $row['U_Address'];?></li>
-                                                    <li class="list-group-item"><i class="fas fa-user-tag"></i> &nbsp;&nbsp;<?php echo ($row['user_role_id']) ? 'Administrator' : 'Standard User';?></li>
-                                                </ul>
-                                            </div>
+                                </div
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="onReload" class="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Modal Open Change Profile -->
+
+
+                    <!-- Cropping image modal-->
+                    <div id="uploadimageModal" class="modal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Upload & Crop Image</h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
+                                            <div id="image_demo" style="width:350px; margin-top:30px"></div>
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success crop_image align-content-center">Crop & Upload Image</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Cropping image modal-->
 
                     </div>
                 </div>
@@ -151,185 +319,6 @@ include('layouts/a_config.php');
     </footer>
     <!-- footer area end-->
 </div>
-<!-- page container area end -->
-<!-- offset area start -->
-<div class="offset-area">
-    <div class="offset-close"><i class="ti-close"></i></div>
-    <ul class="nav offset-menu-tab">
-        <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
-        <li><a data-toggle="tab" href="#settings">Settings</a></li>
-    </ul>
-    <div class="offset-content tab-content">
-        <div id="activity" class="tab-pane fade in show active">
-            <div class="recent-activity">
-                <div class="timeline-task">
-                    <div class="icon bg1">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-check"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Added</h4>
-                        <span class="time"><i class="ti-time"></i>7 Minutes Ago</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>You missed you Password!</h4>
-                        <span class="time"><i class="ti-time"></i>09:20 Am</span>
-                    </div>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="fa fa-bomb"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Member waiting for you Attention</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="ti-signal"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>You Added Kaji Patha few minutes ago</h4>
-                        <span class="time"><i class="ti-time"></i>01 minutes ago</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg1">
-                        <i class="fa fa-envelope"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Ratul Hamba sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Hello sir , where are you, i am egerly waiting for you.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg2">
-                        <i class="fa fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="fa fa-bomb"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-                <div class="timeline-task">
-                    <div class="icon bg3">
-                        <i class="ti-signal"></i>
-                    </div>
-                    <div class="tm-title">
-                        <h4>Rashed sent you an email</h4>
-                        <span class="time"><i class="ti-time"></i>09:35</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse distinctio itaque at.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="settings" class="tab-pane fade">
-            <div class="offset-settings">
-                <h4>General Settings</h4>
-                <div class="settings-list">
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Notifications</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch1"/>
-                                <label for="switch1">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Keep it 'On' When you want to get all the notification.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show recent activity</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch2"/>
-                                <label for="switch2">Toggle</label>
-                            </div>
-                        </div>
-                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show your emails</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch3"/>
-                                <label for="switch3">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Show email so that easily find you.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Show Task statistics</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch4"/>
-                                <label for="switch4">Toggle</label>
-                            </div>
-                        </div>
-                        <p>The for attribute is necessary to bind our custom checkbox with the input.</p>
-                    </div>
-                    <div class="s-settings">
-                        <div class="s-sw-title">
-                            <h5>Notifications</h5>
-                            <div class="s-swtich">
-                                <input type="checkbox" id="switch5"/>
-                                <label for="switch5">Toggle</label>
-                            </div>
-                        </div>
-                        <p>Use checkboxes when looking for yes or no answers.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- offset area end -->
 <!-- jquery latest version -->
 <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
 <!-- bootstrap 4 js -->
@@ -343,6 +332,146 @@ include('layouts/a_config.php');
 <!-- others plugins -->
 <script src="assets/js/plugins.js"></script>
 <script src="assets/js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.4/croppie.min.js"></script>
+
+<script>
+
+    $(document).ready(function () {
+
+        $('#auto-border').hide();
+
+        function openDiv(){
+            let x = document.getElementById("auto-border");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+        $( ".avatar-view" ).mouseover(function() {
+            openDiv();
+        });
+
+        $( ".avatar-view" ).mouseleave(function() {
+            openDiv();
+        });
+
+        // fetch data to #myAccInfo Modal
+        $(document).on('click', '.editBtn', function () {
+            $.ajax({
+                url: "includes/my-account/fetch-myaccount.inc.php",
+                method: "POST",
+                dataType: "json",
+                success: function (data) {
+
+                    $('#myAccInfo').modal('show');
+
+                    $('#Firstname').val(data.Firstname);
+                    $('#Lastname').val(data.Lastname);
+                    $('#U_Email').val(data.U_Email);
+                    $('#PhNo').val(data.PhNo);
+                    $('#Gender').val(data.Gender);
+                    $('#U_Address').val(data.U_Address);
+                    $('#Designation').val(data.Designation);
+                    $('#update').val("Save changes");
+
+                }
+            });
+        });
+
+        // Edit the record
+        $('#updateAcc').on("submit", function (event) {
+            event.preventDefault();
+            $.ajax({
+                url: "includes/my-account/edit-myaccount.inc.php",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend: function () {
+                    $('#update').val("Saving changes");
+                },
+                success: function (data) {
+
+                    if(data=='invalid')
+                    {
+                        $('#alert-danger').show();
+                        $('#alert-danger').addClass('alert alert-danger');
+                        $('#alert-danger').html('<strong>Oh snap!</strong> Sorry, that Record wasn\'t Updated <b>Try Again</b>');
+                    }else{
+                        $('#updateAcc')[0].reset();
+                        $('#myAccInfo').modal('hide');
+                        $('#alert-info').show();
+                        $('#alert-info').html('<strong>Well done!</strong> A Record has been Updated.');
+                        $('#alert-info').addClass('alert alert-info');
+                        //$("#firstDiv").load(" #firstDiv");
+
+                        location.reload();
+                    }
+                },
+                error: function (err) {
+                    $('#alert-danger').show();
+                    $('#alert-danger').addClass('alert alert-danger');
+                    $('#alert-danger').html('<strong>Oh snap!</strong> Sorry, that Record wasn\'t Updated <b>Try Again</b>');
+                }
+            });
+
+        });
+
+        // image croppie
+        $image_crop = $('#image_demo').croppie({
+            enableExif: true,
+            viewport: {
+                width:200,
+                height:200,
+                type:'square' //circle
+            },
+            boundary:{
+                width:300,
+                height:300
+            }
+        });
+
+        $('#upload_image').on('change', function(){
+            var reader = new FileReader();
+            reader.onload = function (event) {
+                $image_crop.croppie('bind', {
+                    url: event.target.result
+                }).then(function(){
+                    console.log('jQuery bind complete');
+                });
+            }
+            reader.readAsDataURL(this.files[0]);
+            $('#uploadimageModal').modal('show');
+        });
+
+        $('.crop_image').click(function(event){
+            $image_crop.croppie('result', {
+                type: 'canvas',
+                size: 'viewport'
+            }).then(function(response){
+                $.ajax({
+                    url:"includes/my-account/upload-img.inc.php",
+                    type: "POST",
+                    data:{"image": response},
+                    success:function(data)
+                    {
+                        $('#uploadimageModal').modal('hide')
+                        $('#uploaded_image').html(data);
+
+                        setTimeout(function () {
+                            location.reload();
+                        },2000);
+
+                    }
+                });
+            })
+        });
+
+    }); // end of ready function
+</script>
 
 </body>
 

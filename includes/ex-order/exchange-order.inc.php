@@ -22,6 +22,7 @@ if (isset($_POST['submitOrder'])) {
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
+    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -65,12 +66,13 @@ if (isset($_POST['submitOrder'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
+                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 
@@ -132,6 +134,7 @@ if (isset($_POST['submitSuppPrint'])) {
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
+    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -167,12 +170,13 @@ if (isset($_POST['submitSuppPrint'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
+                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 
@@ -382,6 +386,7 @@ if (isset($_POST['submitAccPrint'])) {
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
+    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -417,12 +422,13 @@ if (isset($_POST['submitAccPrint'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
+                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 

@@ -33,7 +33,8 @@ foreach ($result as $row) {
   $sub_array[] = ($row["user_role_id"]) ? 'Administrator' : 'Standard User';
   $sub_array[] = $row["DTime"];
   $sub_array[] = '<a class="text-secondary edit-btn" id="' . $row['U_ID'] . '" data-toggle="modal" data-target="#editModal" style="cursor:pointer;"><i class="fa fa-edit"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-        <a class="text-danger delete" id="' . $row['U_ID'] . '" data-toggle="tooltip" data-placement="top" title="Delete"><i class="ti-trash"></i></a>';
+
+ <a class="text-danger delete" id="' . $row['U_ID'] . '" data-toggle="tooltip" data-placement="top" title="Delete"><i class="ti-trash"></i></a>';
 
   $data[] = $sub_array;
 }
