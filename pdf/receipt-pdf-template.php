@@ -8,7 +8,7 @@ class PDF extends PDF_FancyRow
     public function Header()
     {
         // Logo
-        $this->Image('../assets/images/pdf/logo.jpg', 5, 5, 60, 30);
+        $this->Image('../assets/images/pdf/logo.png', 5, 5, 60, 30);
         // Move to the right
         $this->Ln(40);
     }

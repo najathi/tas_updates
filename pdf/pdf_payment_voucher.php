@@ -32,7 +32,7 @@ if (isset($_REQUEST['payment_vou_id'])) {
     $pdf->SetWidths(array(120, 25, 5, 40));
     $pdf->SetLineHeight(5);
     $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array('THE TRAVEL PORTAL PVT LTD', 'Date', ' : ', $py_created_at), array('', '', '', ''), array('', '', '', ''), ['', 'B', '', '']);
+    $pdf->FancyRow(array('THE TRAVEL PORTAL PVT LTD', 'Date', ' : ', date("F j, Y ", strtotime($py_created_at))), array('', '', '', ''), array('', '', '', ''), ['', 'B', '', '']);
     $pdf->FancyRow(array('No: 996/A, Main Street,', 'Receipt No', ' : ',  '#' . $payment_vou_id), array('', '', '', ''), array('', '', '', ''), ['', 'B', '', '']);
     $pdf->FancyRow(array('Kalmunai - 14.', '', '', ''), array('', '', '', ''));
     $pdf->FancyRow(array('SRI LANKA.', '', '', ''), array('', '', '', ''));
@@ -54,7 +54,7 @@ if (isset($_REQUEST['payment_vou_id'])) {
     $pdf->SetAligns(array('L'));
 
     $pdf->SetFont('Arial', 'B', 10);
-    $pdf->FancyRow(array('Payee Details : '), array(''));
+    $pdf->FancyRow(array('Pay to : '), array(''));
     $pdf->Ln(1);
     $pdf->SetFont('Arial', '', 10);
     $pdf->FancyRow(array($py_pay_to), array(''));
@@ -92,6 +92,20 @@ if (isset($_REQUEST['payment_vou_id'])) {
     $pdf->SetFont('Arial', '', 10);
     $pdf->FancyRow(array('LKR: ' . strtoupper(convert_number_to_words((int)$py_amount) . ' Only.'), number_format($py_amount, 2)), array('', ''), ['', 'R']);
 
+    // Signature Part
+    $pdf->Ln(30);
+    $pdf->SetFont('Arial', '', 9);
+    $pdf->Cell(30, 5, '---------------------------------------------', 0, 0);
+    $pdf->Cell(40, 5, '', 0, 0);
+    $pdf->Cell(30, 5, '---------------------------------------------', 0, 0);
+    $pdf->Cell(40, 5, '', 0, 0);
+    $pdf->Cell(30, 5, '---------------------------------------------', 0, 1);
+
+    $pdf->Cell(30, 5, 'PREPARED BY', 0, 0, 'C');
+    $pdf->Cell(45, 5, '', 0, 0);
+    $pdf->Cell(30, 5, 'AUTHORIZED BY', 0, 0, 'C');
+    $pdf->Cell(45, 5, '', 0, 0);
+    $pdf->Cell(30, 5, 'RECIEVER\'S SIGNATURE', 0, 1, 'C');
 
     $pdf->Output();
 }

@@ -13,7 +13,7 @@ if (isset($_REQUEST['invoice_id'])) {
     $result = mysqli_query($conn, $query);
 
     // PDF Class
-    include_once 'ex-order-copy-pdf-template.php';
+    include_once 'invoice-pdf-template.php';
     require('../lib/money/convertNumbertoWords1.php');
 
     // PDF Creaion
@@ -108,7 +108,6 @@ if (isset($_REQUEST['invoice_id'])) {
     $pdf->Cell(30, 5, 'AUTHORIZED BY', 0, 0, 'C');
     $pdf->Cell(45, 5, '', 0, 0);
     $pdf->Cell(30, 5, 'RECIEVER\'S SIGNATURE', 0, 1, 'C');
-
 
     $pdf->Output();
 }

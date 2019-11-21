@@ -15,6 +15,7 @@ if (isset($_POST['submitOrder'])) {
     $customer = mysqli_real_escape_string($conn, $_POST['customer']);
     $counter_staff = $_SESSION['U_ID'];
     $supplier = mysqli_real_escape_string($conn, $_POST['supplier']);
+    $ex_remark = mysqli_real_escape_string($conn, $_POST['ex_remark']);
 
 
     // passenger
@@ -22,7 +23,6 @@ if (isset($_POST['submitOrder'])) {
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
-    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -55,7 +55,7 @@ if (isset($_POST['submitOrder'])) {
 
     if (!$checkResult > 0) {
         // exchange_order
-        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier');";
+        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier,ex_remark) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier', '$ex_remark');";
         $resultAddOrder = mysqli_query($conn, $sqlAddOrder);
 
         $ex_id = mysqli_insert_id($conn);
@@ -66,13 +66,12 @@ if (isset($_POST['submitOrder'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
-                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 
@@ -128,13 +127,14 @@ if (isset($_POST['submitSuppPrint'])) {
     $customer = mysqli_real_escape_string($conn, $_POST['customer']);
     $counter_staff = $_SESSION['U_ID'];
     $supplier = mysqli_real_escape_string($conn, $_POST['supplier']);
+    $ex_remark = mysqli_real_escape_string($conn, $_POST['ex_remark']);
+
 
     // passenger
     $p_name = $_POST['p_name'];
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
-    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -159,7 +159,7 @@ if (isset($_POST['submitSuppPrint'])) {
 
     if (!$checkResult > 0) {
         // exchange_order
-        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier');";
+        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier, ex_remark) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier', '$ex_remark');";
         $resultAddOrder = mysqli_query($conn, $sqlAddOrder);
 
         $ex_id = mysqli_insert_id($conn);
@@ -170,13 +170,12 @@ if (isset($_POST['submitSuppPrint'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
-                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 
@@ -247,17 +246,31 @@ if (isset($_POST['submitSuppPrint'])) {
     $pdf->AliasNbPages();
     $pdf->AddPage();
 
-    // Customer Info
+    // Company Information Info
     $pdf->Ln(3);
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetWidths(array(190));
+    $pdf->SetLineHeight(5);
+    $pdf->SetAligns(array('L'));
+    $pdf->FancyRow(array('The Travel Portal Pvt Ltd'), array(''));
+    $pdf->FancyRow(array('No: 996/A, Main Street,'), array(''));
+    $pdf->FancyRow(array('Kalmunai - 14.'), array(''));
+    $pdf->FancyRow(array('SRI LANKA.'), array(''));
+    $pdf->FancyRow(array(''), array(''));
+    $pdf->FancyRow(array('Phone : (067) 434-4400'), array(''));
+    $pdf->FancyRow(array('Email : info@thetravelportal.lk'), array(''));
+
+    // Supplier Info
+    $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 10);
     $pdf->SetWidths(array(95, 5, 45, 5, 40));
     $pdf->SetLineHeight(5);
     $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array($c_name , '', 'XO No.', ' : ', $ex_id), array('TLR', '', 'TL', 'T', 'TR'));
-    $pdf->FancyRow(array($c_address_one, '', 'XO Date', ' : ', $xo_date), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_address_two, '', '', '', ''), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_tele_no, '', '', '', ''), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_email, '', '', '', ''), array('LBR', '', 'LB', 'B', 'BR'));
+    $pdf->FancyRow(array($supp_name, '', 'XO No.', ' : ', $ex_id), array('TLR', '', 'TL', 'T', 'TR'));
+    $pdf->FancyRow(array($supp_address_one, '', 'XO Date', ' : ', date("F j, Y ", strtotime($xo_date))), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_address_two, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_tele, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_email, '', '', '', ''), array('LBR', '', 'LB', 'B', 'BR'));
 
 
     // Title of Document
@@ -268,32 +281,6 @@ if (isset($_POST['submitSuppPrint'])) {
     $pdf->SetFont('Arial', '', 14);
     $pdf->Cell(190, 5, 'Exchange Order', 0, 1, 'C');
 
-    //Another Data Table
-    $pdf->Ln(7);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
-    $pdf->SetLineHeight(5);
-    $pdf->SetAligns(array('L'));
-
-    $pdf->SetFont('Arial', 'B', 10);
-    $pdf->FancyRow(array('To:'), array('TLR'));
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->FancyRow(array($supp_name), array('LR'));
-    $pdf->FancyRow(array($supp_address_one), array('LR'));
-    $pdf->FancyRow(array($supp_address_two), array('LR'));
-    $pdf->FancyRow(array($supp_tele), array('LR'));
-    $pdf->FancyRow(array($supp_email), array('LBR'));
-
-
-    // Customer Type
-    /*$pdf->Ln(5);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
-    $pdf->SetLineHeight(5);
-    $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array('Customer : ' . $c_name), array(''));*/
-
-
     // Data's Table
     $pdf->Ln(5);
     $pdf->SetFont('Times', 'B', 9);
@@ -303,11 +290,13 @@ if (isset($_POST['submitSuppPrint'])) {
     $pdf->SetLineHeight(5);
 
     // set alignment of records
-    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R'));
+    $pdf->SetAligns(array('', '', '', '', '', '', '', '', '', '', ''));
 
     // Column
     $pdf->SetFont('Arial', 'B', 9);
     $pdf->Row(array('Pax Name', 'Sector', 'Flt Details', 'Cls', 'Travel Date', 'Ticket / Booking Ref', 'Basic', 'Total Tax', 'Supp. Chrg', 'Net Supplier'));
+
+    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R'));
 
     $totalAmount = 0;
     $totalSupplierCharge = 0;
@@ -318,7 +307,7 @@ if (isset($_POST['submitSuppPrint'])) {
         $pdf->SetFont('Arial', '', 9);
         $pdf->Row(array($value, $from_to[$key], $flight_no[$key], $class_code[$key], $depart_date[$key], $booking_ref[$key], number_format($basicc[$key], 2), number_format($total_tax[$key], 2), number_format($supp_charge[$key], 2), number_format($net_to_supplier[$key], 2)));
 
-        $totalAmount += ($basicc[$key] + $total_tax[$key] + $supp_charge[$key] + $net_to_supplier[$key]);
+        $totalAmount += ($basicc[$key] + $total_tax[$key] + $supp_charge[$key]);
         $totalSupplierCharge += $supp_charge[$key];
         $totalNetDue += $net_due[$key];
     }
@@ -341,16 +330,11 @@ if (isset($_POST['submitSuppPrint'])) {
     // Remark and Summary Table
     $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, 'Remarks: ', 'TL', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Supplier Chrg', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalSupplierCharge, 2), 1, 1, 'R');
-
-    $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, '', 'LB', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Net Due', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalNetDue, 2), 1, 1, 'R');
+    $pdf->SetWidths(array(190));
+    $pdf->SetAligns(array('L'));
+    $pdf->Cell(190, 5, 'Remarks: ', 'TRL', 1);
+    $pdf->FancyRow(array($ex_remark), array('RL'));
+    $pdf->Cell(190, 2, '', 'BRL', 1);
 
 
     // Signature Part
@@ -380,13 +364,14 @@ if (isset($_POST['submitAccPrint'])) {
     $customer = mysqli_real_escape_string($conn, $_POST['customer']);
     $counter_staff = $_SESSION['U_ID'];
     $supplier = mysqli_real_escape_string($conn, $_POST['supplier']);
+    $ex_remark = mysqli_real_escape_string($conn, $_POST['ex_remark']);
+
 
     // passenger
     $p_name = $_POST['p_name'];
     $ticket_no = $_POST['ticket_no'];
     $ticket_date = $_POST['ticket_date'];
     $booking_ref = $_POST['booking_ref'];
-    $pass_remark = $_POST['pass_remark'];
     $basicc = $_POST['basicc'];
     $yq = $_POST['yq'];
     $yr = $_POST['yr'];
@@ -411,7 +396,7 @@ if (isset($_POST['submitAccPrint'])) {
 
     if (!$checkResult > 0) {
         // exchange_order
-        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier');";
+        $sqlAddOrder = "INSERT INTO exchange_order(xo_date, customer, counter_staff, supplier, ex_remark) VALUES('$xo_date', '$customer', '$counter_staff', '$supplier', '$ex_remark');";
         $resultAddOrder = mysqli_query($conn, $sqlAddOrder);
 
         $ex_id = mysqli_insert_id($conn);
@@ -422,13 +407,12 @@ if (isset($_POST['submitAccPrint'])) {
 
             foreach ($p_name as $key => $value) {
 
-                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, pass_remark, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
+                $sqlPass = "INSERT INTO passenger(exch_order, p_name, ticket_no, ticket_date, booking_ref, basicc, yq, yr, tax_3, tax_4, total_tax, supp_charge, service_amt, net_profit, net_due, net_to_supplier, from_to, class_code, airline_code, flight_no, depart_date) VALUES(
                 '$ex_id', 
                 '" . mysqli_real_escape_string($conn, $value) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_no[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $ticket_date[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $booking_ref[$key]) . "', 
-                '" . mysqli_real_escape_string($conn, $pass_remark[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $basicc[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yq[$key]) . "', 
                 '" . mysqli_real_escape_string($conn, $yr[$key]) . "', 
@@ -499,46 +483,34 @@ if (isset($_POST['submitAccPrint'])) {
     $pdf->SetFont('Arial', '', 14);
     $pdf->Cell(190, 5, 'Exchange Order', 0, 1, 'C');
 
-    //Another Data Table
-    $pdf->Ln(7);
+    // Supplier Info and Ex_order Info
+    $pdf->Ln(3);
     $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
+    $pdf->SetWidths(array(95, 5, 45, 5, 40));
     $pdf->SetLineHeight(5);
     $pdf->SetAligns(array('L'));
-
-    $pdf->SetFont('Arial', 'B', 10);
-    $pdf->FancyRow(array('To:'), array('TLR'));
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->FancyRow(array($supp_name), array('LR'));
-    $pdf->FancyRow(array($supp_address_one), array('LR'));
-    $pdf->FancyRow(array($supp_address_two), array('LR'));
-    $pdf->FancyRow(array($supp_tele), array('LR'));
-    $pdf->FancyRow(array($supp_email), array('LBR'));
-
-
-    // Customer Type
-    /*$pdf->Ln(5);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
-    $pdf->SetLineHeight(5);
-    $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array('Customer : ' . $c_name), array(''));*/
-
+    $pdf->FancyRow(array($supp_name, '', 'XO No.', ' : ', $ex_id), array('TLR', '', 'TL', 'T', 'TR'));
+    $pdf->FancyRow(array($supp_address_one, '', 'XO Date', ' : ', date("F j, Y ", strtotime($xo_date))), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_address_two, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_tele, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_email, '', '', '', ''), array('LBR', '', 'LB', 'B', 'BR'));
 
     // Data Table
     $pdf->Ln(5);
     $pdf->SetFont('Times', 'B', 9);
     $pdf->Cell(45, 5, 'Details as follows :', 0, 1);
 
-    $pdf->SetWidths(array(25, 15, 10, 10, 20, 15, 20, 20, 15, 15, 25));
+    $pdf->SetWidths(array(20, 15, 10, 10, 20, 15, 20, 20, 17, 18, 25));
     $pdf->SetLineHeight(5);
 
     // set alignment of records
-    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R','R'));
+    $pdf->SetAligns(array('', '', '', '', '', '', '', '', '', '', ''));
 
     // Column
     $pdf->SetFont('Arial', 'B', 9);
     $pdf->Row(array('Pax Name', 'Sector', 'Flt Details', 'Cls', 'Travel Date', 'Ticket / Booking Ref', 'Basic', 'Total Tax', 'Supp. Chrg', 'Service Amt.', 'Net Due'));
+
+    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R', 'R'));
 
     $totalAmount = 0;
     $totalServiceAmount = 0;
@@ -550,7 +522,7 @@ if (isset($_POST['submitAccPrint'])) {
         $pdf->SetFont('Arial', '', 9);
         $pdf->Row(array($value, $from_to[$key], $flight_no[$key], $class_code[$key], $depart_date[$key], $booking_ref[$key], number_format($basicc[$key], 2), number_format($total_tax[$key], 2), number_format($supp_charge[$key], 2), number_format($service_amt[$key], 2), number_format($net_due[$key], 2)));
 
-        $totalAmount += ($basicc[$key] + $total_tax[$key] + $supp_charge[$key] + $service_amt[$key] + $net_due[$key]);
+        $totalAmount += ($basicc[$key] + $total_tax[$key] + $supp_charge[$key] + $service_amt[$key]);
         $totalServiceAmount += $service_amt[$key];
         $totalNetDue += $net_due[$key];
 
@@ -571,21 +543,14 @@ if (isset($_POST['submitAccPrint'])) {
     $pdf->SetFont('Arial', 'B', 9);
     $pdf->FancyRow(array('LKR : ' . number_format($totalAmount, 2) . ' in words ' . strtoupper(convert_number_to_words($totalAmount) . ' Only')), array(''));
 
-
     // Remark and Summary Table
     $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, 'Remarks: ', 'TL', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Serv Chrg', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalServiceAmount, 2), 1, 1, 'R');
-
-    $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, '', 'LB', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Net Due', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalNetDue, 2), 1, 1, 'R');
-
+    $pdf->SetWidths(array(190));
+    $pdf->SetAligns(array('L'));
+    $pdf->Cell(190, 5, 'Remarks: ', 'TRL', 1);
+    $pdf->FancyRow(array($ex_remark), array('RL'));
+    $pdf->Cell(190, 2, '', 'BRL', 1);
 
     // Signature Part
     $pdf->Ln(30);

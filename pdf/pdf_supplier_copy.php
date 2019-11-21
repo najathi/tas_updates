@@ -19,6 +19,7 @@ if (isset($_REQUEST['ex_id'])) {
     $customer = $rowPdf['customer'];
     $counter_staff = $rowPdf['counter_staff'];
     $supplier = $rowPdf['supplier'];
+    $ex_remark = $rowPdf['ex_remark'];
 
     // customer table variable
     $cus_ac_code = $rowPdf['cus_ac_code'];
@@ -47,17 +48,31 @@ if (isset($_REQUEST['ex_id'])) {
     $pdf->AliasNbPages();
     $pdf->AddPage();
 
-    // Customer Info
+    // Company Information Info
+    $pdf->Ln(3);
+    $pdf->SetFont('Arial', '', 10);
+    $pdf->SetWidths(array(190));
+    $pdf->SetLineHeight(5);
+    $pdf->SetAligns(array('L'));
+    $pdf->FancyRow(array('The Travel Portal Pvt Ltd'), array(''));
+    $pdf->FancyRow(array('No: 996/A, Main Street,'), array(''));
+    $pdf->FancyRow(array('Kalmunai - 14.'), array(''));
+    $pdf->FancyRow(array('SRI LANKA.'), array(''));
+    $pdf->FancyRow(array(''), array(''));
+    $pdf->FancyRow(array('Phone : (067) 434-4400'), array(''));
+    $pdf->FancyRow(array('Email : info@thetravelportal.lk'), array(''));
+
+    // Supplier Info and Ex_order Info
     $pdf->Ln(3);
     $pdf->SetFont('Arial', '', 10);
     $pdf->SetWidths(array(95, 5, 45, 5, 40));
     $pdf->SetLineHeight(5);
     $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array($c_name , '', 'XO No.', ' : ', $ex_id), array('TLR', '', 'TL', 'T', 'TR'));
-    $pdf->FancyRow(array($c_address_one, '', 'XO Date', ' : ', $xo_date), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_address_two, '', '', '', ''), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_tele_no, '', '', '', ''), array('LR', '', 'L', '', 'R'));
-    $pdf->FancyRow(array($c_email, '', '', '', ''), array('LBR', '', 'LB', 'B', 'BR'));
+    $pdf->FancyRow(array($supp_name, '', 'XO No.', ' : ', $ex_id), array('TLR', '', 'TL', 'T', 'TR'));
+    $pdf->FancyRow(array($supp_address_one, '', 'XO Date', ' : ', date("F j, Y ", strtotime($xo_date))), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_address_two, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_tele, '', '', '', ''), array('LR', '', 'L', '', 'R'));
+    $pdf->FancyRow(array($supp_email, '', '', '', ''), array('LBR', '', 'LB', 'B', 'BR'));
 
 
     // Title of Document
@@ -68,32 +83,6 @@ if (isset($_REQUEST['ex_id'])) {
     $pdf->SetFont('Arial', '', 14);
     $pdf->Cell(190, 5, 'Exchange Order', 0, 1, 'C');
 
-    //Another Data Table
-    $pdf->Ln(7);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
-    $pdf->SetLineHeight(5);
-    $pdf->SetAligns(array('L'));
-
-    $pdf->SetFont('Arial', 'B', 10);
-    $pdf->FancyRow(array('To:'), array('TLR'));
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->FancyRow(array($supp_name), array('LR'));
-    $pdf->FancyRow(array($supp_address_one), array('LR'));
-    $pdf->FancyRow(array($supp_address_two), array('LR'));
-    $pdf->FancyRow(array($supp_tele), array('LR'));
-    $pdf->FancyRow(array($supp_email), array('LBR'));
-
-
-    // Customer Type
-    /*$pdf->Ln(5);
-    $pdf->SetFont('Arial', '', 10);
-    $pdf->SetWidths(array(190));
-    $pdf->SetLineHeight(5);
-    $pdf->SetAligns(array('L'));
-    $pdf->FancyRow(array('Customer : ' . $c_name), array(''));*/
-
-
     // Data Table
     $pdf->Ln(5);
     $pdf->SetFont('Times', 'B', 9);
@@ -103,11 +92,13 @@ if (isset($_REQUEST['ex_id'])) {
     $pdf->SetLineHeight(5);
 
     // set alignment of records
-    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R'));
+    $pdf->SetAligns(array('', '', '', '', '', '', '', '', '', '', ''));
 
     // Column
     $pdf->SetFont('Arial', 'B', 9);
     $pdf->Row(array('Pax Name', 'Sector', 'Flt Details', 'Cls', 'Travel Date', 'Ticket / Booking Ref', 'Basic', 'Total Tax', 'Supp. Chrg', 'Net Supplier'));
+
+    $pdf->SetAligns(array('', '', '', '', '', '', 'R', 'R', 'R', 'R', 'R'));
 
     $totalAmount = 0;
     $totalSupplierCharge = 0;
@@ -119,7 +110,7 @@ if (isset($_REQUEST['ex_id'])) {
         $pdf->SetFont('Arial', '', 9);
         $pdf->Row(array($row['p_name'], $row['from_to'], $row['flight_no'], $row['class_code'], $row['depart_date'], $row['booking_ref'], number_format($row['basicc'], 2), number_format($row['total_tax'], 2), number_format($row['supp_charge'], 2), number_format($row['net_to_supplier'], 2)));
 
-        $totalAmount += ($row['basicc'] + $row['total_tax'] + $row['supp_charge'] + $row['net_to_supplier']);
+        $totalAmount += ($row['basicc'] + $row['total_tax'] + $row['supp_charge']);
         $totalSupplierCharge += $row['supp_charge'];
         $totalNetDue += $row['net_due'];
 
@@ -138,21 +129,17 @@ if (isset($_REQUEST['ex_id'])) {
     $pdf->SetLineHeight(5);
     $pdf->SetAligns(array('L'));
     $pdf->SetFont('Arial', 'B', 9);
-    $pdf->FancyRow(array('LKR : ' . number_format($totalAmount, 2) . ' in words ' . strtoupper(convert_number_to_words($totalAmount) . ' Only.')),array(''));
+    $pdf->FancyRow(array('LKR : ' . number_format($totalAmount, 2) . ' in words ' . strtoupper(convert_number_to_words($totalAmount) . ' Only.')), array(''));
 
     // Remark and Summary Table
     $pdf->Ln(5);
     $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, 'Remarks: ', 'TL', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Supplier Chrg', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalSupplierCharge, 2), 1, 1, 'R');
+    $pdf->SetWidths(array(190));
+    $pdf->SetAligns(array('L'));
+    $pdf->Cell(190, 5, 'Remarks: ', 'TRL', 1);
+    $pdf->FancyRow(array($ex_remark), array('RL'));
+    $pdf->Cell(190, 2, '', 'BRL', 1);
 
-    $pdf->SetFont('Arial', '', 9);
-    $pdf->Cell(120, 5, '', 'LB', 0);
-    $pdf->SetFont('Arial', 'B', 9);
-    $pdf->Cell(30, 5, 'Net Due', 1, 0);
-    $pdf->Cell(40, 5, number_format($totalNetDue, 2), 1, 1, 'R');
 
     // Signature Part
     $pdf->Ln(20);

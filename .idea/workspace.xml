@@ -3,24 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="2dfc4f27-01bb-4503-9b76-ed59f80f18e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add-customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/add-customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add-supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/add-supplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/change-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/change-password.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/profile/1573812511.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/tas_updates (5).sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/exchange-order.php" beforeDir="false" afterPath="$PROJECT_DIR$/exchange-order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/authentication/login.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/authentication/login.inc.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/ex-order/exchange-order.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/ex-order/exchange-order.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/user/fetch-user-dt.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/user/fetch-user-dt.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/drop-down.php" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/drop-down.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my-account.php" beforeDir="false" afterPath="$PROJECT_DIR$/my-account.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/payment-voucher.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment-voucher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/receipt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-ex-order.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-ex-order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search-supplier.php" beforeDir="false" afterPath="$PROJECT_DIR$/search-supplier.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users-control.php" beforeDir="false" afterPath="$PROJECT_DIR$/users-control.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/ex-order-copy-pdf-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/ex-order-copy-pdf-template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/ex-order-pdf-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/ex-order-pdf-template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/payment-voucher-pdf-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/payment-voucher-pdf-template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/pdf_accounts_copy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_accounts_copy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/pdf_payment_voucher.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_payment_voucher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/pdf_receipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_receipt.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/pdf_supplier_copy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_supplier_copy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdf/receipt-pdf-template.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/receipt-pdf-template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utilities/exchange-order-table.txt" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/exchange-order-table.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utilities/passenger.txt" beforeDir="false" afterPath="$PROJECT_DIR$/utilities/passenger.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -130,7 +125,9 @@
       <workItem from="1573405248697" duration="13651000" />
       <workItem from="1573476372681" duration="6308000" />
       <workItem from="1573620625956" duration="9749000" />
-      <workItem from="1573659287175" duration="57395000" />
+      <workItem from="1573659287175" duration="58226000" />
+      <workItem from="1574255804689" duration="4595000" />
+      <workItem from="1574352911172" duration="12081000" />
     </task>
     <servers />
   </component>

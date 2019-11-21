@@ -8,18 +8,13 @@ class PDF extends PDF_FancyRow
     public function Header()
     {
         // Logo
-        $this->Image('../assets/images/pdf/logo.jpg', 5, 5, 60, 30);
+        $this->Image('../assets/images/pdf/logo.png', 5, 5, 60, 30);
         // Move to the right
         $this->Ln(40);
     }
     // Page footer
     public function Footer()
     {
-        // Footer Text
-        $this->SetFont('Arial', 'I', 9);
-        $this->setY(-20);
-        $this->cell(190,5,'This is computer generated voucher no signature required.',0,0,'C');
-
         // Position at 1.5 cm from bottom
         $this->SetY(-15);
         // Arial italic 8
