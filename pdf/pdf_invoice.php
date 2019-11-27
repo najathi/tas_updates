@@ -2,7 +2,6 @@
 
 if (isset($_REQUEST['invoice_id'])) {
     include_once '../includes/connection/dbh.inc.php';
-    include_once '../lib/address/address_divider.inc.php';
     $invoice_id=$_REQUEST['invoice_id'];
 
     $queries = "SELECT * FROM `invoice` INNER JOIN exchange_order ON invoice.ex_order = exchange_order.ex_id INNER JOIN passenger ON invoice.ex_order = passenger.exch_order INNER JOIN customer ON exchange_order.customer = customer.cus_ac_code INNER JOIN supplierr ON exchange_order.supplier = supplierr.supp_id WHERE invoice_id = '".$invoice_id."'";

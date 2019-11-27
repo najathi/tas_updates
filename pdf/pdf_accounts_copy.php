@@ -2,7 +2,6 @@
 
 if (isset($_REQUEST['ex_id'])) {
     include_once '../includes/connection/dbh.inc.php';
-    include_once '../lib/address/address_divider.inc.php';
     $ex_id = $_REQUEST['ex_id'];
 
     $queryPdf = "SELECT * FROM exchange_order JOIN customer ON exchange_order.customer = customer.cus_ac_code JOIN supplierr ON exchange_order.supplier = supplierr.supp_id WHERE ex_id = '" . $ex_id . "'";
