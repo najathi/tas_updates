@@ -74,6 +74,7 @@ if (isset($_POST["receipt_id"])) {
                         </tr>
                     </tbody>
                 </table>
+                <p>Payment Details: ' . $row["payment_info"] . '</p>
                 
                 
                

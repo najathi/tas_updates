@@ -72,9 +72,7 @@ if (isset($_POST["payment_vou_id"])) {
                         </tr>
                     </tbody>
                 </table>
-                
-                
-               
+                <p>Payment Details: ' . $row["py_payment_info"] . '</p>
       ';
   }
   $output .= '</div>

@@ -153,7 +153,6 @@ include('layouts/a_config.php');
                                                 <th scope="col">Pay to</th>
                                                 <th scope="col">Telephone</th>
                                                 <th scope="col">Mode of Payment</th>
-                                                <th scope="col">Payment Details</th>
                                                 <th scope="col">Amount</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">action</th>
@@ -693,7 +692,7 @@ include('layouts/a_config.php');
                     type: "POST"
                 },
                 "columnDefs": [{
-                    "targets": [0, 7, 8],
+                    "targets": [0, 6, 7],
                     "orderable": false,
                 }, ]
             });

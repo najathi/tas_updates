@@ -3,12 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="2dfc4f27-01bb-4503-9b76-ed59f80f18e5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/customer/cus-ac-count.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/customer/cus-ac-count.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/supplier/supp_id-count.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/supplier/supp_id-count.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/address/address_divider.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/lib/address/address_divider.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf/pdf_accounts_copy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_accounts_copy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf/pdf_invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pdf/pdf_supplier_copy.php" beforeDir="false" afterPath="$PROJECT_DIR$/pdf/pdf_supplier_copy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/payment-voucher/fetch-payment-vou.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/payment-voucher/fetch-payment-vou.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/payment-voucher/payment-vou-edit.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/payment-voucher/payment-vou-edit.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/payment-voucher/payment-vou-insert.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/payment-voucher/payment-vou-insert.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/payment-voucher/select-payment-vou.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/payment-voucher/select-payment-vou.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/receipt/fetch-receipt.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/receipt/fetch-receipt.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/receipt/receipt-edit.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/receipt/receipt-edit.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/receipt/receipt-insert.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/receipt/receipt-insert.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/receipt/select-receipt.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/receipt/select-receipt.inc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/payment-voucher.php" beforeDir="false" afterPath="$PROJECT_DIR$/payment-voucher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipt.php" beforeDir="false" afterPath="$PROJECT_DIR$/receipt.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,6 +127,8 @@
       <workItem from="1574843178470" duration="1118000" />
       <workItem from="1574847919976" duration="2572000" />
       <workItem from="1574854189041" duration="638000" />
+      <workItem from="1574861548988" duration="1747000" />
+      <workItem from="1578210095457" duration="1219000" />
     </task>
     <servers />
   </component>

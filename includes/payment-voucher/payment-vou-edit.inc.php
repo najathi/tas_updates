@@ -37,7 +37,6 @@ if (!empty($_POST)) {
                       <th scope="col">Pay to</th>
                       <th scope="col">Telephone</th>
                       <th scope="col">Mode of Payment</th>
-                      <th scope="col">Payment Details</th>
                       <th scope="col">Amount</th>
                       <th scope="col">Date</th>
                       <th scope="col">action</th>
@@ -53,7 +52,6 @@ if (!empty($_POST)) {
                         <td>' . $row['py_pay_to'] . '</td>
                         <td>' . $row['py_tele'] . '</td>
                         <td>' . $row['py_mode_of_payment'] . '</td>
-                        <td>' . $row['py_payment_info'] . '</td>
                         <td>' . $row['py_amount'] . '</td>
                         <td>' . $row['py_created_at'] . '</td>
                         <td>

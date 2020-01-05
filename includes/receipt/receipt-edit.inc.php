@@ -37,7 +37,6 @@ if (!empty($_POST)) {
                       <th scope="col">Payee Details</th>
                       <th scope="col">Telephone</th>
                       <th scope="col">Mode of Payment</th>
-                      <th scope="col">Payment Details</th>
                       <th scope="col">Amount</th>
                       <th scope="col">Date</th>
                       <th scope="col">action</th>
@@ -53,7 +52,6 @@ if (!empty($_POST)) {
                         <td>' . $row['re_customer'] . '</td>
                         <td>' . $row['re_tele'] . '</td>
                         <td>' . $row['mode_of_payment'] . '</td>
-                        <td>' . $row['payment_info'] . '</td>
                         <td>' . $row['re_amount'] . '</td>
                         <td>' . $row['re_created_at'] . '</td>
                         <td>

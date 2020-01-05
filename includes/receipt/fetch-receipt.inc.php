@@ -31,7 +31,6 @@ foreach ($result as $row) {
   $sub_array[] = $row["re_customer"];
   $sub_array[] = $row["re_tele"];
   $sub_array[] = $row["mode_of_payment"];
-  $sub_array[] = $row["payment_info"];
   $sub_array[] = $row["re_amount"];
   $sub_array[] = $row["re_created_at"];
   $sub_array[] = '<a style="cursor: pointer;" class="text-secondary viewBtn" id="' . $row['receipt_id'] . '" data-toggle="modal tooltip" data-target=".viewOrder" data-whatever="' . $row['receipt_id'] . '" data-placement="top" title="View"><i class="fa fa-eye"></i></a> &nbsp;&nbsp;|&nbsp;&nbsp;
