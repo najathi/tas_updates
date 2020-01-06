@@ -480,7 +480,7 @@ include('layouts/a_config.php');
                                                    class="btn btn-dark">View</a>
                                                 <a style="cursor:pointer;color:white;" target="_blank"
                                                    href="search-ex-order" class="btn btn-dark">Search</a>
-                                                <a style="cursor:pointer;color:white;" href="#" class="btn btn-dark">Help</a>
+                                                <a style="cursor:pointer;color:white;" target="_blank" href="users-guide.pdf" class="btn btn-success">Help</a>
                                             </div>
 
 
