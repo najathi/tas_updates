@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2019 at 09:09 PM
+-- Generation Time: Jan 07, 2020 at 04:29 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -142,8 +142,8 @@ INSERT INTO `invoice` (`invoice_id`, `ex_order`, `is_invoice`, `in_created_at`, 
 (000018, 000027, 0, '2019-11-21 17:58:21', '2019-11-21 17:58:21'),
 (000019, 000028, 0, '2019-11-21 17:58:59', '2019-11-21 17:58:59'),
 (000020, 000029, 0, '2019-11-21 18:23:09', '2019-11-21 18:23:09'),
-(000021, 000030, 0, '2019-11-21 18:52:47', '2019-11-21 18:52:47'),
-(000022, 000031, 0, '2019-11-21 18:55:29', '2019-11-21 18:55:29'),
+(000021, 000030, 1, '2019-11-21 18:52:47', '2019-11-21 18:52:47'),
+(000022, 000031, 1, '2019-11-21 18:55:29', '2019-11-21 18:55:29'),
 (000023, 000032, 0, '2019-11-21 19:09:49', '2019-11-21 19:09:49'),
 (000024, 000033, 0, '2019-11-21 19:19:40', '2019-11-21 19:19:40');
 
@@ -274,7 +274,8 @@ INSERT INTO `payment_voucher` (`payment_vou_id`, `py_pay_to`, `py_tele`, `py_fax
 (000047, 'hhhhhhhhhhhhhhhhhhh', 'jhjhjhjghjhjhj', 'jhhggf', 'ghj', 'jghghjjg', '1265453.99', '2019-10-21 14:05:48', '2019-10-21 16:58:53'),
 (000048, 'Mohamed Haneefa', '06767767', '5668', 'Cheque', 'cash', '100000.00', '2019-10-22 13:40:07', '0000-00-00 00:00:00'),
 (000053, '445', '445545', '54445', 'Cheque', 'ekfjwgfwgef', '2154.00', '2019-11-13 08:54:36', '0000-00-00 00:00:00'),
-(000054, '867676', '76767', '67676', 'Cheque', '76767', '67676.00', '2019-11-13 09:22:00', '2019-11-13 09:22:00');
+(000054, '867676', '76767', '67676', 'Cheque', '76767', '67676.00', '2019-11-13 09:22:00', '2019-11-13 09:22:00'),
+(000056, 'njkhjhj', 'kjkjjkk', 'mrjgkrjgk', 'Cheque', 'kldgjrkjhkrjhtjhk', '4.00', '2020-01-05 08:12:09', '2020-01-05 08:12:09');
 
 -- --------------------------------------------------------
 
@@ -489,7 +490,7 @@ ALTER TABLE `passenger`
 -- AUTO_INCREMENT for table `payment_voucher`
 --
 ALTER TABLE `payment_voucher`
-  MODIFY `payment_vou_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `payment_vou_id` int(6) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `receipt`

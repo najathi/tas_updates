@@ -38,7 +38,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pdf" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -52,9 +52,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\tas_updates" />
       <recent name="C:\xampp\htdocs\tas_updates\pdf" />
       <recent name="C:\xampp\htdocs\tas_updates\includes" />
-      <recent name="C:\xampp\htdocs\tas_updates" />
       <recent name="C:\xampp\htdocs\tas_updates\lib\fpdf" />
       <recent name="C:\xampp\htdocs\tas_updates\pdf\lib" />
     </key>
@@ -119,7 +119,9 @@
       <workItem from="1574854189041" duration="638000" />
       <workItem from="1574861548988" duration="1747000" />
       <workItem from="1578210095457" duration="2504000" />
-      <workItem from="1578274573864" duration="1652000" />
+      <workItem from="1578274573864" duration="2420000" />
+      <workItem from="1578367350910" duration="6000" />
+      <workItem from="1578367489941" duration="231000" />
     </task>
     <servers />
   </component>
