@@ -1,0 +1,7 @@
+invoice
+
+invoice_id
+ex_order
+is_invoice
+in_created_at
+in_updated_at

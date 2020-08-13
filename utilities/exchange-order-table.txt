@@ -1,0 +1,10 @@
+exchange_order
+
+ex_id
+xo_date
+customer
+counter_staff
+supplier
+ex_remark
+ex_created_at
+ex_updated_at
