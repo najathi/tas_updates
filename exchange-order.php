@@ -179,32 +179,32 @@ include('layouts/a_config.php');
             <form id="ex_order" action="includes/ex-order/exchange-order.inc.php" method="POST">
 
                 <div class="row">
-                    <div class="col-lg-12 col-ml-12">
+                    <div class="col-lg-12">
                         <div class="row">
                             <!-- Add Customer Information start -->
-                            <div class="col-12 mt-5">
+                            <div class="col-sm-12 mt-5">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="header-title">Order Information</h4>
                                         <p class="text-muted font-14 mb-4">Here are want to add <code>Order
                                                 Information</code> of Exchange Order.</p>
                                         <div id="error"></div>
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label for="example-date-input" class="col-form-label">XO No.</label>
                                                 <input class="form-control" name="ex_id" id="ex_id" type="text"
                                                        readonly="readonly" value="<?php printf("%06d", $countExId); ?>">
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label for="example-date-input" class="col-form-label">XO Date</label>
                                                 <input name="xo_date" id="xo_date" class="form-control" type="date"
                                                        required>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label class="col-form-label">Customer</label>
                                                 <select name="customer" id="customer" class="custom-select">
                                                     <option value="000001" selected="selected">Direct Customer
@@ -216,16 +216,16 @@ include('layouts/a_config.php');
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label for="example-text-input" class="col-form-label">Counter
                                                     Staff</label>
                                                 <input class="form-control" value="<?php echo $row['Lastname']; ?>"
                                                        type="text" id="counter_staff" readonly="readonly">
                                             </div>
                                         </div>
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label class="col-form-label">Supplier</label>
                                                 <select name="supplier" id="supplier" class="custom-select" required>
                                                     <option value="">Please Select the Supplier</option>
@@ -236,8 +236,8 @@ include('layouts/a_config.php');
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12 mb-3 row">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-12 mb-3 row">
+                                            <div class="col-md-12 col-xl-9">
                                                 <label for="validationCustom04">Remark</label>
                                                 <textarea name="ex_remark" id="ex_remark" cols="30" rows="4"
                                                           class="form-control"></textarea>
@@ -254,19 +254,20 @@ include('layouts/a_config.php');
 
 
                         <div id="main_div" class="main_sec_div">
-                            <div class="col-lg-12 col-ml-12">
+
+                            <div class="col-lg-12 col-ml-12" style="margin-top: 10px; margin-bottom: 10px;">
                                 <button type="button" id="add" class="btn btn-primary"><i class="fas fa-plus"></i>
                                 </button>
                             </div>
 
-                            <div class="col-lg-12 col-ml-12 group">
+                            <div class="col-lg-12 col-md-12 group mt-10">
                                 <div class="row"
-                                     style="padding:0rem 1rem 1rem 1rem; padding-bottom:1.5rem; margin:2rem 0.2rem 2rem 0.2rem; background:#ccc;">
+                                     style="padding-bottom:1.5rem; background:#ccc;">
                                     <div class="col-12 mt-5" style="margin:-1rem;">
                                         <span style="margin-left:1rem;" class="status-p bg-primary">Passanger #1</span>
                                     </div>
                                     <!-- Add Ticket Information start -->
-                                    <div class="col-3 mt-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-3 mt-5">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="header-title">Ticket Infromation</h4>
@@ -303,7 +304,7 @@ include('layouts/a_config.php');
                                     <!-- End Ticket Infromation -->
 
                                     <!-- Fare Section start -->
-                                    <div class="col-6 mt-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-6 mt-5">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="header-title">Fare Section</h4>
@@ -393,7 +394,7 @@ include('layouts/a_config.php');
                                         </div>
                                     </div>
                                     <!-- Coupon Information start -->
-                                    <div class="col-3 mt-5">
+                                    <div class="col-sm-12 col-md-12 col-lg-3 mt-5">
                                         <div class="card">
                                             <div class="card-body">
                                                 <h4 class="header-title">Coupon Information</h4>
