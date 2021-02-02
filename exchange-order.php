@@ -603,9 +603,9 @@ include('layouts/a_config.php');
                 i++;
                 console.log('Add', i);
                 html = `
-                <div class="col-lg-12 col-ml-12 second-div" id="sec_div${i}">
-                    <div class="row" style="padding:0rem 1rem 1rem 1rem; padding-bottom:1.5rem; margin:2rem 0.2rem 2rem 0.2rem; background:#ccc;">
-                        <div class="col-12 mt-5" style="margin:-1rem; display:flex; height:60px; align-items:center; align-content:center; justify-content:space-between;">
+                <div class="col-lg-12 second-div" id="sec_div${i}" style="background: #ccc;">
+                    <div class="row" style="padding:0 0 1rem 0; padding-bottom:1.5rem; margin:2rem 0.2rem 2rem 0.2rem; background:#ccc;">
+                        <div class="col-12 mt-5" style="margin:-1rem; display:flex; height:60px; align-items:center; align-content:center; justify-content:space-between; margin-bottom: 20px;">
                             <div>
                                 <span style="margin-left:1rem;" class="status-p bg-primary">Passanger #${++passCount}</span>
                             </div>
@@ -614,7 +614,7 @@ include('layouts/a_config.php');
                             </div>
                         </div>
 
-                        <div class="col-3 mt-5">
+                        <div class="col-lg-12 col-md-12 group mt-10">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="header-title">Ticket Infromation</h4>
@@ -642,7 +642,7 @@ include('layouts/a_config.php');
                             </div>
                         </div>
 
-                        <div class="col-6 mt-5">
+                        <div class="col-lg-12 col-md-12 group mt-10">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="header-title">Fare Section</h4>
@@ -707,7 +707,7 @@ include('layouts/a_config.php');
                             </div>
                         </div>
 
-                        <div class="col-3 mt-5">
+                        <div class="col-lg-12 col-md-12 group mt-10">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="header-title">Coupon Information</h4>
@@ -743,7 +743,8 @@ include('layouts/a_config.php');
                         </div>
 
                     </div>
-                </div>`;
+                </div>
+                `;
 
                 $('#main_div').append(html);
             });
